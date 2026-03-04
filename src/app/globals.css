@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --gold: #C8A84B;
+  --orange: #E8531A;
+  --dark: #0A0A0A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #0A0A0A;
+  color: #E8E8E8;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #C8A84B; border-radius: 2px; }
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Typography */
+h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; line-height: 1.1; }
+
+/* Gold accent line */
+.accent-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #C8A84B, #E8531A);
+  display: block;
+}
+
+/* Article card hover */
+.article-card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.article-card:hover {
+  transform: translateY(-3px);
+  border-color: #C8A84B !important;
+}
+
+/* Category badge */
+.cat-badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+/* Prose styles for article content */
+.prose-gta h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: #C8A84B; margin: 2rem 0 0.75rem; }
+.prose-gta h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; color: #E8E8E8; margin: 1.5rem 0 0.5rem; }
+.prose-gta p { margin-bottom: 1.25rem; color: #CCCCCC; }
+.prose-gta ul { margin: 1rem 0 1.25rem 1.5rem; color: #CCCCCC; }
+.prose-gta li { margin-bottom: 0.4rem; }
+.prose-gta a { color: #C8A84B; text-decoration: underline; text-underline-offset: 3px; }
+.prose-gta strong { color: #E8E8E8; font-weight: 600; }
+.prose-gta blockquote {
+  border-left: 3px solid #C8A84B;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: #AAA;
+  font-style: italic;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: radial-gradient(ellipse at top, #1a1200 0%, #0A0A0A 60%);
+}
+
+/* Grid scanline effect on hero */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.15) 2px,
+    rgba(0,0,0,0.15) 4px
+  );
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease forwards; }
+.fade-up-delay { animation: fadeUp 0.6s ease 0.15s forwards; opacity: 0; }
+.fade-up-delay-2 { animation: fadeUp 0.6s ease 0.3s forwards; opacity: 0; }
