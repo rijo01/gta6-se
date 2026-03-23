@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -72,7 +73,7 @@ export default async function NyheterArticle({ params }: Props) {
 
         {/* Article body */}
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '2.5rem 1rem 4rem' }}>
-          <div className="prose-gta" dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div className="prose-gta"><MDXRemote source={article.content} /></div>
         </div>
       </main>
       <Footer />
