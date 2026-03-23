@@ -4,7 +4,6 @@ import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
-
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -47,23 +46,22 @@ export default async function NyheterArticle({ params }: Props) {
       })}} />
 
       <main style={{ paddingTop: '56px' }}>
-        {/* Article header */}
-        <section style={{ padding: '3rem 1rem 2rem', borderBottom: '1px solid #1A1A1A', background: 'linear-gradient(180deg, #0D0D0D 0%, #0A0A0A 100%)' }}>
+        <section style={{ padding: '3rem 1rem 2rem', borderBottom: '1px solid rgba(255,45,123,0.1)', background: 'linear-gradient(180deg, #110810 0%, #0A0609 100%)', position: 'relative' }}>
           <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-            <span className="cat-badge" style={{ color: '#E8531A', display: 'block', marginBottom: '0.75rem' }}>Nyheter</span>
-            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.25rem)', lineHeight: 1.05, color: '#F0F0F0', marginBottom: '1rem' }}>
+            <span className="cat-badge neon-text-pink" style={{ color: '#FF2D7B', display: 'block', marginBottom: '0.75rem' }}>Nyheter</span>
+            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', lineHeight: 1.05, color: '#F0E8F4', marginBottom: '1rem' }}>
               {article.title}
             </h1>
-            <p style={{ color: '#777', fontSize: '1rem', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+            <p style={{ color: '#7A6E80', fontSize: '1rem', marginBottom: '1.25rem', lineHeight: 1.5 }}>
               {article.description}
             </p>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-              <span style={{ width: 32, height: 1, background: '#E8531A', display: 'block' }} />
-              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#555', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              <span style={{ width: 32, height: 1, background: '#FF2D7B', display: 'block', boxShadow: '0 0 8px rgba(255,45,123,0.4)' }} />
+              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#5A4E60', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 {formatDate(article.date)}
               </span>
               {article.readTime && (
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#444', letterSpacing: '0.06em' }}>
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#4A3E50', letterSpacing: '0.06em' }}>
                   · {article.readTime} min läsning
                 </span>
               )}
@@ -71,7 +69,6 @@ export default async function NyheterArticle({ params }: Props) {
           </div>
         </section>
 
-        {/* Article body */}
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '2.5rem 1rem 4rem' }}>
           <div className="prose-gta" dangerouslySetInnerHTML={{ __html: article.content }} />
         </div>

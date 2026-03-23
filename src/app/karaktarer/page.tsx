@@ -15,16 +15,16 @@ export default function KaraktarerPage() {
     <>
       <Header />
       <main style={{ paddingTop: '56px' }}>
-        <section style={{ padding: '3rem 1rem 2.5rem', borderBottom: '1px solid #1A1A1A', background: 'linear-gradient(180deg, #0D0D0D 0%, #0A0A0A 100%)' }}>
+        <section style={{ padding: '3rem 1rem 2.5rem', borderBottom: '1px solid rgba(155,47,255,0.08)', background: 'linear-gradient(180deg, #110810 0%, #0A0609 100%)' }}>
           <div className="max-w-6xl mx-auto">
-            <span className="cat-badge" style={{ color: '#8B5CF6', display: 'block', marginBottom: '0.5rem' }}>GTA6.SE</span>
-            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: '#F0F0F0' }}>Karaktärer</h1>
-            <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '0.5rem' }}>Jason, Lucia och alla karaktärer i GTA 6</p>
+            <span className="cat-badge neon-text-purple" style={{ color: '#9B2FFF', display: 'block', marginBottom: '0.5rem' }}>GTA6.SE</span>
+            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: '#F0E8F4' }}>Karaktärer</h1>
+            <p style={{ color: '#5A4E60', fontSize: '0.9rem', marginTop: '0.5rem' }}>Jason, Lucia och alla karaktärer i GTA 6</p>
           </div>
         </section>
         <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '2.5rem', paddingBottom: '3rem' }}>
           {articles.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
               {articles.map(a => <ArticleCard key={a.slug} article={a} />)}
             </div>
           ) : (

@@ -4,7 +4,6 @@ import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
-
 interface Props { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
@@ -37,14 +36,14 @@ export default async function ReleaseArticle({ params }: Props) {
         datePublished: article.date, inLanguage: 'sv-SE',
       })}} />
       <main style={{ paddingTop: '56px' }}>
-        <section style={{ padding: '3rem 1rem 2rem', borderBottom: '1px solid #1A1A1A', background: 'linear-gradient(180deg, #0D0D0D 0%, #0A0A0A 100%)' }}>
+        <section style={{ padding: '3rem 1rem 2rem', borderBottom: '1px solid rgba(255,107,26,0.08)', background: 'linear-gradient(180deg, #110810 0%, #0A0609 100%)' }}>
           <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-            <span className="cat-badge" style={{ color: '#C8A84B', display: 'block', marginBottom: '0.75rem' }}>Release</span>
-            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.25rem)', lineHeight: 1.05, color: '#F0F0F0', marginBottom: '1rem' }}>{article.title}</h1>
-            <p style={{ color: '#777', fontSize: '1rem', marginBottom: '1.25rem' }}>{article.description}</p>
+            <span className="cat-badge neon-text-orange" style={{ color: '#FF6B1A', display: 'block', marginBottom: '0.75rem' }}>Release</span>
+            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', lineHeight: 1.05, color: '#F0E8F4', marginBottom: '1rem' }}>{article.title}</h1>
+            <p style={{ color: '#7A6E80', fontSize: '1rem', marginBottom: '1.25rem' }}>{article.description}</p>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <span style={{ width: 32, height: 1, background: '#C8A84B', display: 'block' }} />
-              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#555', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{formatDate(article.date)}</span>
+              <span style={{ width: 32, height: 1, background: '#FF6B1A', display: 'block', boxShadow: '0 0 8px rgba(255,107,26,0.4)' }} />
+              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#5A4E60', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{formatDate(article.date)}</span>
             </div>
           </div>
         </section>

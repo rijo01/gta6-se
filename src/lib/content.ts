@@ -93,13 +93,13 @@ export function getArticle(category: Category, slug: string): Article | null {
 export const categoryLabels: Record<Category, string> = {
   nyheter: 'Nyheter',
   guider: 'Guider',
-  karaktarer: 'Karaktärer',
+  karaktarer: 'Karaktarer',
   release: 'Release',
 }
 
 export const categoryColors: Record<Category, string> = {
-  nyheter: '#E8531A',
-  guider: '#3B82F6',
-  karaktarer: '#8B5CF6',
-  release: '#C8A84B',
+  nyheter: '#FF2D7B',
+  guider: '#00F5FF',
+  karaktarer: '#9B2FFF',
+  release: '#FF6B1A',
 }

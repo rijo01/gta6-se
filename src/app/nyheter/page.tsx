@@ -16,14 +16,13 @@ export default function NyheterPage() {
     <>
       <Header />
       <main style={{ paddingTop: '56px' }}>
-        {/* Page header */}
-        <section style={{ padding: '3rem 1rem 2.5rem', borderBottom: '1px solid #1A1A1A', background: 'linear-gradient(180deg, #0D0D0D 0%, #0A0A0A 100%)' }}>
+        <section style={{ padding: '3rem 1rem 2.5rem', borderBottom: '1px solid rgba(255,45,123,0.08)', background: 'linear-gradient(180deg, #110810 0%, #0A0609 100%)' }}>
           <div className="max-w-6xl mx-auto">
-            <span className="cat-badge" style={{ color: '#E8531A', display: 'block', marginBottom: '0.5rem' }}>GTA6.SE</span>
-            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: '#F0F0F0' }}>
+            <span className="cat-badge neon-text-pink" style={{ color: '#FF2D7B', display: 'block', marginBottom: '0.5rem' }}>GTA6.SE</span>
+            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: '#F0E8F4' }}>
               Nyheter
             </h1>
-            <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+            <p style={{ color: '#5A4E60', fontSize: '0.9rem', marginTop: '0.5rem' }}>
               Senaste nytt om GTA 6 — trailers, tillkännagivanden och Rockstar-uppdateringar
             </p>
           </div>
@@ -31,7 +30,7 @@ export default function NyheterPage() {
 
         <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '2.5rem', paddingBottom: '3rem' }}>
           {articles.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
               {articles.map(article => (
                 <ArticleCard key={article.slug} article={article} />
               ))}

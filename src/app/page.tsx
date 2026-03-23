@@ -5,10 +5,10 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 const categoryNav = [
-  { href: '/nyheter', label: 'Nyheter', desc: 'Senaste nytt från Rockstar', color: '#E8531A' },
-  { href: '/guider', label: 'Guider', desc: 'Tips, tricks & hemligheter', color: '#3B82F6' },
-  { href: '/karaktarer', label: 'Karaktärer', desc: 'Jason, Lucia & mer', color: '#8B5CF6' },
-  { href: '/release', label: 'Release', desc: 'Datum, plattformar & rykten', color: '#C8A84B' },
+  { href: '/nyheter', label: 'Nyheter', desc: 'Senaste nytt från Rockstar', color: '#FF2D7B' },
+  { href: '/guider', label: 'Guider', desc: 'Tips, tricks & hemligheter', color: '#00F5FF' },
+  { href: '/karaktarer', label: 'Karaktärer', desc: 'Jason, Lucia & mer', color: '#9B2FFF' },
+  { href: '/release', label: 'Release', desc: 'Datum, plattformar & rykten', color: '#FF6B1A' },
 ]
 
 export default function HomePage() {
@@ -20,46 +20,58 @@ export default function HomePage() {
     <>
       <Header />
       <main style={{ paddingTop: '56px' }}>
-        {/* Hero */}
-        <section className="hero-gradient" style={{ padding: '5rem 1rem 4rem', position: 'relative', overflow: 'hidden' }}>
-          {/* Decorative grid */}
-          <div className="scanlines" style={{ position: 'absolute', inset: 0, opacity: 0.3, pointerEvents: 'none' }} />
+        {/* Hero — Vice City Sunset */}
+        <section className="hero-gradient" style={{ padding: '6rem 1rem 5rem', position: 'relative', overflow: 'hidden', minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
+          {/* Scanline overlay */}
+          <div className="scanlines" style={{ position: 'absolute', inset: 0, opacity: 0.25, pointerEvents: 'none' }} />
 
-          {/* Glow */}
+          {/* Horizon glow line */}
+          <div className="horizon-line glow-pulse" />
+
+          {/* Top ambient glow — pink/purple */}
           <div style={{
-            position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)',
-            width: '600px', height: '300px',
-            background: 'radial-gradient(ellipse, rgba(200,168,75,0.12) 0%, transparent 70%)',
+            position: 'absolute', top: '-150px', left: '50%', transform: 'translateX(-50%)',
+            width: '900px', height: '500px',
+            background: 'radial-gradient(ellipse, rgba(155,47,255,0.12) 0%, rgba(255,45,123,0.08) 30%, transparent 70%)',
             pointerEvents: 'none',
           }} />
 
-          <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
-            <p className="cat-badge fade-up" style={{ color: '#C8A84B', marginBottom: '0.75rem', display: 'block' }}>
+          {/* Warm sunset glow at center */}
+          <div style={{
+            position: 'absolute', top: '55%', left: '50%', transform: 'translate(-50%, -50%)',
+            width: '1200px', height: '400px',
+            background: 'radial-gradient(ellipse, rgba(255,107,26,0.08) 0%, rgba(255,45,123,0.04) 40%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
+
+          <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+            <p className="cat-badge fade-up neon-text-pink" style={{ color: '#FF2D7B', marginBottom: '1rem', display: 'block', fontSize: '0.7rem' }}>
               Sveriges #1 GTA 6-sajt
             </p>
             <h1 className="fade-up-delay" style={{
               fontFamily: 'Bebas Neue, sans-serif',
-              fontSize: 'clamp(3.5rem, 10vw, 7rem)',
-              letterSpacing: '0.04em',
-              lineHeight: 1,
-              background: 'linear-gradient(135deg, #F0F0F0 0%, #C8A84B 100%)',
+              fontSize: 'clamp(4rem, 12vw, 9rem)',
+              letterSpacing: '0.05em',
+              lineHeight: 0.95,
+              background: 'linear-gradient(135deg, #FF6B9D 0%, #FF8C42 40%, #FFD166 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              marginBottom: '1rem',
+              marginBottom: '1.5rem',
+              filter: 'drop-shadow(0 0 30px rgba(255, 107, 157, 0.3)) drop-shadow(0 0 60px rgba(255, 140, 66, 0.15))',
             }}>
-              GRAND THEFT<br />AUTO 6
+              GRAND THEFT<br />AUTO VI
             </h1>
-            <p className="fade-up-delay-2" style={{ color: '#777', fontSize: '1rem', maxWidth: '500px', marginBottom: '2.5rem' }}>
+            <p className="fade-up-delay-2" style={{ color: '#8A7A90', fontSize: '1.05rem', maxWidth: '520px', marginBottom: '2.5rem', lineHeight: 1.7 }}>
               Nyheter, guider, karaktärsanalyser och release-information — allt om GTA 6 på svenska.
             </p>
 
-            {/* Category pills */}
-            <div className="fade-up-delay-2" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {/* Category pills with neon glow */}
+            <div className="fade-up-delay-3" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
               {categoryNav.map(cat => (
                 <Link key={cat.href} href={cat.href} style={{
                   display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                  padding: '0.4rem 1rem',
-                  border: `1px solid ${cat.color}33`,
+                  padding: '0.5rem 1.25rem',
+                  border: `1px solid ${cat.color}40`,
                   borderRadius: '2px',
                   color: cat.color,
                   fontFamily: 'Barlow Condensed, sans-serif',
@@ -68,8 +80,9 @@ export default function HomePage() {
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   textDecoration: 'none',
-                  transition: 'background 0.2s',
-                  background: `${cat.color}11`,
+                  transition: 'all 0.3s ease',
+                  background: `${cat.color}08`,
+                  boxShadow: `0 0 12px ${cat.color}10`,
                 }}>
                   {cat.label}
                 </Link>
@@ -78,33 +91,33 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Category cards */}
-        <section style={{ background: '#0D0D0D', borderTop: '1px solid #1A1A1A', borderBottom: '1px solid #1A1A1A' }}>
+        {/* Category cards strip */}
+        <section style={{ background: '#0D080A', borderTop: '1px solid rgba(255,45,123,0.1)', borderBottom: '1px solid rgba(255,45,123,0.1)' }}>
           <div className="max-w-6xl mx-auto px-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
             {categoryNav.map((cat, i) => (
               <Link key={cat.href} href={cat.href}
                 style={{
-                  padding: '1.25rem 1rem',
-                  borderRight: i < 3 ? '1px solid #1A1A1A' : 'none',
+                  padding: '1.5rem 1rem',
+                  borderRight: i < 3 ? '1px solid rgba(255,255,255,0.04)' : 'none',
                   textDecoration: 'none',
-                  transition: 'background 0.2s',
+                  transition: 'all 0.3s ease',
                   display: 'block',
                 }}
                 className="hover:bg-white/[0.02]">
-                <span className="cat-badge" style={{ color: cat.color, display: 'block', marginBottom: '0.3rem' }}>{cat.label}</span>
-                <span style={{ fontSize: '0.75rem', color: '#555' }}>{cat.desc}</span>
+                <span className="cat-badge" style={{ color: cat.color, display: 'block', marginBottom: '0.35rem', textShadow: `0 0 10px ${cat.color}40` }}>{cat.label}</span>
+                <span style={{ fontSize: '0.75rem', color: '#554A58' }}>{cat.desc}</span>
               </Link>
             ))}
           </div>
         </section>
 
-        <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
+        <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
           {/* Featured article */}
           {featured && (
-            <section style={{ marginBottom: '3rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+            <section style={{ marginBottom: '3.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <span className="accent-line" />
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#666' }}>
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5A4E60' }}>
                   Senaste
                 </span>
               </div>
@@ -115,13 +128,13 @@ export default function HomePage() {
           {/* Recent articles grid */}
           {recent.length > 0 && (
             <section>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <span className="accent-line" />
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#666' }}>
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5A4E60' }}>
                   Fler artiklar
                 </span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.25rem' }}>
                 {recent.map(article => (
                   <ArticleCard key={`${article.category}-${article.slug}`} article={article} />
                 ))}
