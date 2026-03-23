@@ -1,9 +1,9 @@
-import { getArticle, getArticlesByCategory } from '@/lib/content'
+import { getArticleWithHtml, getArticlesByCategory } from '@/lib/content'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const article = getArticle('karaktarer', slug)
+  const article = await getArticleWithHtml('karaktarer', slug)
   if (!article) return {}
   return { title: article.title, description: article.description }
 }
@@ -25,7 +25,7 @@ function formatDate(d: string) {
 
 export default async function KaraktarerArticle({ params }: Props) {
   const { slug } = await params
-  const article = getArticle('karaktarer', slug)
+  const article = await getArticleWithHtml('karaktarer', slug)
   if (!article) notFound()
 
   return (
@@ -50,7 +50,7 @@ export default async function KaraktarerArticle({ params }: Props) {
           </div>
         </section>
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '2.5rem 1rem 4rem' }}>
-          <div className="prose-gta"><MDXRemote source={article.content} /></div>
+          <div className="prose-gta" dangerouslySetInnerHTML={{ __html: article.content }} />
         </div>
       </main>
       <Footer />
