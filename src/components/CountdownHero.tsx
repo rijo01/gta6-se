@@ -13,7 +13,7 @@ function calc() {
   }
 }
 
-const labels = ['DAGAR', 'TIMMAR', 'MINUTER', 'SEKUNDER'] as const
+const labels = ['DAGAR', 'TIMMAR', 'MIN', 'SEK'] as const
 
 export default function CountdownHero() {
   const [time, setTime] = useState<ReturnType<typeof calc> | null>(null)
@@ -24,28 +24,26 @@ export default function CountdownHero() {
     return () => clearInterval(id)
   }, [])
 
-  if (!time) return <div style={{ height: '88px' }} />
+  if (!time) return <div style={{ height: '80px' }} />
 
   const values = [time.days, time.hours, time.minutes, time.seconds]
 
   return (
-    <div style={{ display: 'flex', gap: 'clamp(0.5rem, 2vw, 1rem)' }}>
+    <div className="grid grid-cols-4 gap-2 sm:gap-3" style={{ maxWidth: '380px' }}>
       {values.map((val, i) => (
         <div key={labels[i]} style={{
-          background: 'rgba(16, 12, 21, 0.85)',
-          border: '1px solid rgba(255, 45, 123, 0.2)',
+          background: 'rgba(10, 6, 15, 0.8)',
+          border: '1px solid rgba(255, 45, 123, 0.25)',
           borderRadius: '2px',
-          padding: 'clamp(0.6rem, 1.5vw, 1rem) clamp(0.8rem, 2vw, 1.5rem)',
+          padding: 'clamp(0.5rem, 1.2vw, 0.8rem) clamp(0.4rem, 1vw, 0.6rem)',
           textAlign: 'center',
-          minWidth: 'clamp(56px, 10vw, 80px)',
           backdropFilter: 'blur(8px)',
-          boxShadow: '0 0 20px rgba(255, 45, 123, 0.06)',
+          boxShadow: '0 0 15px rgba(255, 45, 123, 0.06)',
         }}>
           <span style={{
             fontFamily: 'Bebas Neue, sans-serif',
-            fontSize: 'clamp(1.8rem, 4vw, 3.2rem)',
-            lineHeight: 1,
-            display: 'block',
+            fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)',
+            lineHeight: 1, display: 'block',
             background: 'linear-gradient(135deg, #FF6B9D, #FF8C42, #FFD166)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -53,13 +51,9 @@ export default function CountdownHero() {
             {String(val).padStart(i === 0 ? 1 : 2, '0')}
           </span>
           <span style={{
-            fontFamily: 'Barlow Condensed, sans-serif',
-            fontWeight: 700,
-            fontSize: '0.55rem',
-            letterSpacing: '0.2em',
-            color: '#5A4E60',
-            display: 'block',
-            marginTop: '0.3rem',
+            fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+            fontSize: '0.5rem', letterSpacing: '0.18em',
+            color: '#5A4E60', display: 'block', marginTop: '0.25rem',
           }}>
             {labels[i]}
           </span>

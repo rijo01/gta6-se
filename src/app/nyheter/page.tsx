@@ -14,7 +14,7 @@ export default function NyheterPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '56px' }}>
+      <main style={{ paddingTop: '88px' }}>
         <section className="category-hero" style={{ borderBottom: '1px solid rgba(255,45,123,0.1)' }}>
           <div style={{ position: 'absolute', top: '-60px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '250px', background: 'radial-gradient(ellipse, rgba(255,45,123,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>

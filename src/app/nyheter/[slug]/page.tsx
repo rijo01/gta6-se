@@ -38,7 +38,7 @@ export default async function NyheterArticle({ params }: Props) {
     <>
       <Header />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.description, datePublished: article.date, inLanguage: 'sv-SE', publisher: { '@type': 'Organization', name: 'GTA6.se', url: 'https://gta6.se' } }) }} />
-      <main style={{ paddingTop: '56px' }}>
+      <main style={{ paddingTop: '88px' }}>
         <section style={{ padding: '3.5rem 1rem 2.5rem', position: 'relative', overflow: 'hidden', background: `linear-gradient(180deg, #100C15 0%, #07040A 100%)`, borderBottom: `1px solid ${CAT_COLOR}15` }}>
           <div style={{ position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: `radial-gradient(ellipse, ${CAT_COLOR}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
           <div style={{ maxWidth: '740px', margin: '0 auto', position: 'relative', zIndex: 1 }}>

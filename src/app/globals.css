@@ -376,3 +376,99 @@ h1, h2, h3, h4 {
   overflow: hidden;
   background: linear-gradient(180deg, var(--vc-dark-2) 0%, var(--vc-dark-1) 100%);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   VICE CITY IMMERSION — neon signs, wet asphalt, marquee
+   ═══════════════════════════════════════════════════════════ */
+
+/* Gradient title utility */
+.vc-title {
+  font-family: var(--font-display);
+  background: linear-gradient(135deg, #FF2D7B 0%, #FF6B1A 50%, #FFD166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(255,45,123,0.5));
+}
+
+/* Neon sign classes — full tube glow */
+.neon-sign-pink {
+  color: #FF2D7B;
+  text-shadow: 0 0 5px #FF2D7B, 0 0 15px #FF2D7B, 0 0 30px #FF2D7B, 0 0 60px rgba(255,45,123,0.25);
+  animation: neon-flicker 4s infinite;
+}
+.neon-sign-cyan {
+  color: #00F5FF;
+  text-shadow: 0 0 5px #00F5FF, 0 0 15px #00F5FF, 0 0 30px #00F5FF, 0 0 60px rgba(0,245,255,0.25);
+}
+.neon-sign-orange {
+  color: #FF6B1A;
+  text-shadow: 0 0 5px #FF6B1A, 0 0 15px #FF6B1A, 0 0 30px #FF6B1A, 0 0 60px rgba(255,107,26,0.25);
+}
+
+/* Wet asphalt reflection */
+.wet-asphalt {
+  background: linear-gradient(180deg, transparent 0%, rgba(255,45,123,0.02) 40%, rgba(255,107,26,0.04) 100%);
+}
+
+/* Marquee / news ticker */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Glow pulse for hero "VICE CITY" text */
+@keyframes glow-pulse-text {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255,45,123,0.5)) drop-shadow(0 0 60px rgba(255,45,123,0.2)); }
+  50% { filter: drop-shadow(0 0 35px rgba(255,107,26,0.6)) drop-shadow(0 0 80px rgba(255,45,123,0.3)); }
+}
+
+/* Vice City sky gradient for immersive hero */
+.vc-sky {
+  background: linear-gradient(180deg,
+    #0A0212 0%,
+    #1A0A2E 20%,
+    #2D0A1F 40%,
+    #4A1520 55%,
+    #6E200E 68%,
+    #8B2E0A 78%,
+    #CC5500 90%,
+    #FF8C00 100%
+  );
+}
+
+/* Stars pseudo-element */
+.vc-stars::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: transparent;
+  box-shadow:
+    12vw 5vh 0 0.5px rgba(255,255,255,0.5),
+    25vw 8vh 0 0.5px rgba(255,255,255,0.3),
+    40vw 3vh 0 1px rgba(255,255,255,0.6),
+    55vw 12vh 0 0.5px rgba(255,255,255,0.4),
+    68vw 6vh 0 0.5px rgba(255,255,255,0.3),
+    82vw 9vh 0 1px rgba(255,255,255,0.5),
+    8vw 15vh 0 0.5px rgba(255,255,255,0.25),
+    33vw 18vh 0 0.5px rgba(255,255,255,0.4),
+    60vw 2vh 0 0.5px rgba(255,255,255,0.5),
+    75vw 16vh 0 0.5px rgba(255,255,255,0.3),
+    91vw 4vh 0 0.5px rgba(255,255,255,0.4),
+    15vw 22vh 0 0.5px rgba(255,255,255,0.2),
+    48vw 20vh 0 0.5px rgba(255,255,255,0.35),
+    5vw 10vh 0 0.5px rgba(255,255,255,0.3),
+    70vw 22vh 0 0.5px rgba(255,255,255,0.2),
+    88vw 14vh 0 0.5px rgba(255,255,255,0.4),
+    20vw 25vh 0 0.5px rgba(255,255,255,0.15),
+    52vw 7vh 0 1px rgba(255,255,255,0.5),
+    35vw 1vh 0 0.5px rgba(255,255,255,0.4),
+    95vw 18vh 0 0.5px rgba(255,255,255,0.25),
+    3vw 28vh 0 0.5px rgba(255,255,255,0.2),
+    42vw 26vh 0 0.5px rgba(255,255,255,0.15),
+    78vw 1vh 0 0.5px rgba(255,255,255,0.5),
+    62vw 28vh 0 0.5px rgba(255,255,255,0.1),
+    18vw 4vh 0 0.5px rgba(255,255,255,0.35);
+  pointer-events: none;
+}

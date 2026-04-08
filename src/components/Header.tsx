@@ -17,24 +17,22 @@ export default function Header() {
     <header style={{
       background: 'rgba(7, 4, 10, 0.92)',
       backdropFilter: 'blur(16px) saturate(1.3)',
-    }} className="fixed top-0 left-0 right-0 z-50">
+      top: '32px', /* below news ticker */
+    }} className="fixed left-0 right-0 z-50">
       {/* Animated gradient border */}
       <div className="header-border" />
 
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between" style={{ height: '56px' }}>
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-1 group" style={{ textDecoration: 'none', transition: 'transform 0.25s' }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.04)' }}
-          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)' }}
+        {/* Logo — neon sign effect */}
+        <Link href="/" className="flex items-center gap-0.5 group" style={{ textDecoration: 'none', transition: 'transform 0.25s' }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.filter = 'drop-shadow(0 0 20px rgba(255,107,157,0.4))' }}
+          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'none' }}
         >
-          <span style={{
+          <span className="neon-sign-pink" style={{
             fontFamily: 'Bebas Neue, sans-serif',
             fontSize: '2rem',
             letterSpacing: '0.05em',
-            background: 'linear-gradient(135deg, #FF6B9D, #FF8C42, #FFD166)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 0 12px rgba(255,107,157,0.3))',
+            animationDelay: '0.5s',
           }}>
             GTA6
           </span>
@@ -53,15 +51,12 @@ export default function Header() {
           {navLinks.map(link => (
             <Link key={link.href} href={link.href}
               style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-                fontWeight: 700,
-                fontSize: '0.8rem',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
+                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: hovered === link.href ? link.color : '#7A6880',
                 textShadow: hovered === link.href ? `0 0 12px ${link.color}60` : 'none',
                 textDecoration: 'none',
-                transition: 'color 0.25s, text-shadow 0.25s',
+                transition: 'color 0.25s, text-shadow 0.25s, border-color 0.25s',
                 padding: '0.25rem 0',
                 borderBottom: hovered === link.href ? `1px solid ${link.color}80` : '1px solid transparent',
               }}
@@ -71,8 +66,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-
-          {/* Twitter */}
           <a href="https://twitter.com/GTA6_SE" target="_blank" rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
@@ -83,14 +76,8 @@ export default function Header() {
               border: '1px solid rgba(255,45,123,0.25)',
               borderRadius: '2px', transition: 'all 0.25s',
             }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = '#FF2D7B'
-              e.currentTarget.style.color = '#07040A'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color = '#FF2D7B'
-            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#FF2D7B'; e.currentTarget.style.color = '#07040A' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF2D7B' }}
           >
             <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
             @GTA6_SE
@@ -123,8 +110,7 @@ export default function Header() {
             <a href="https://twitter.com/GTA6_SE" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.85rem',
-              letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FF2D7B',
-              textDecoration: 'none',
+              letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FF2D7B', textDecoration: 'none',
             }}>
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
               Följ @GTA6_SE
