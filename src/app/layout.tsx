@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   },
   description: 'Sveriges ledande källa för GTA 6. Senaste nytt, guider, karaktärer och all release-information om Grand Theft Auto 6.',
   keywords: ['GTA 6', 'Grand Theft Auto 6', 'GTA 6 Sverige', 'GTA 6 release', 'GTA 6 guide'],
+  verification: {
+    google: 'REPLACE_WITH_GSC_CODE', // Replace with your Google Search Console verification code
+  },
   metadataBase: new URL('https://gta6.se'),
   openGraph: {
     type: 'website',
