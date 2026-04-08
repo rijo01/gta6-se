@@ -2,46 +2,15 @@ import { getAllArticles } from '@/lib/content'
 import ArticleCard from '@/components/ArticleCard'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Countdown from '@/components/Countdown'
+import CountdownHero from '@/components/CountdownHero'
 import Link from 'next/link'
 
-const categoryNav = [
-  { href: '/nyheter', label: 'Nyheter', desc: 'Senaste nytt från Rockstar', color: '#FF2D7B' },
-  { href: '/guider', label: 'Guider', desc: 'Tips, tricks & hemligheter', color: '#00F5FF' },
-  { href: '/karaktarer', label: 'Karaktärer', desc: 'Jason, Lucia & mer', color: '#9B2FFF' },
-  { href: '/release', label: 'Release', desc: 'Datum, plattformar & rykten', color: '#FF6B1A' },
+const cats = [
+  { href: '/nyheter', label: 'Nyheter', desc: 'Trailers, tillkännagivanden och uppdateringar', color: '#FF2D7B', count: 'nyheter' },
+  { href: '/guider', label: 'Guider', desc: 'Tips, tricks och djupgående spelguider', color: '#00F5FF', count: 'guider' },
+  { href: '/karaktarer', label: 'Karaktärer', desc: 'Lucia, Jason och Vice Citys invånare', color: '#9B2FFF', count: 'karaktarer' },
+  { href: '/release', label: 'Release', desc: 'Datum, plattformar och förbeställningar', color: '#FF6B1A', count: 'release' },
 ]
-
-/* Simple palm tree silhouette SVG */
-function PalmSilhouette({ side }: { side: 'left' | 'right' }) {
-  const flip = side === 'right' ? 'scaleX(-1)' : 'none'
-  return (
-    <svg
-      viewBox="0 0 200 600"
-      fill="none"
-      style={{
-        position: 'absolute',
-        [side]: 0,
-        bottom: '10%',
-        height: '70%',
-        maxHeight: '500px',
-        transform: flip,
-        opacity: 0.06,
-        pointerEvents: 'none',
-      }}
-    >
-      {/* Trunk */}
-      <path d="M100 600 C95 500, 85 400, 90 300 C92 250, 98 220, 100 200" stroke="#9B2FFF" strokeWidth="8" fill="none" />
-      {/* Fronds */}
-      <path d="M100 200 C80 180, 30 170, 5 190" stroke="#3A8040" strokeWidth="4" fill="none" />
-      <path d="M100 200 C85 170, 40 140, 10 145" stroke="#3A8040" strokeWidth="4" fill="none" />
-      <path d="M100 200 C110 165, 130 130, 170 125" stroke="#3A8040" strokeWidth="4" fill="none" />
-      <path d="M100 200 C115 175, 150 160, 190 170" stroke="#3A8040" strokeWidth="4" fill="none" />
-      <path d="M100 200 C95 160, 80 120, 50 100" stroke="#3A8040" strokeWidth="3" fill="none" />
-      <path d="M100 200 C108 155, 140 110, 180 100" stroke="#3A8040" strokeWidth="3" fill="none" />
-    </svg>
-  )
-}
 
 export default function HomePage() {
   const articles = getAllArticles()
@@ -52,132 +21,147 @@ export default function HomePage() {
     <>
       <Header />
       <main style={{ paddingTop: '56px' }}>
-        {/* ═══ Hero — Vice City Sunset ═══ */}
-        <section className="hero-gradient" style={{ padding: '6rem 1rem 5rem', position: 'relative', overflow: 'hidden', minHeight: '85vh', display: 'flex', alignItems: 'center' }}>
-          {/* Scanline overlay */}
-          <div className="scanlines" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }} />
 
-          {/* Horizon glow line */}
-          <div className="horizon-line glow-pulse" />
+        {/* ═══ HERO — Vice City Cover Page ═══ */}
+        <section className="hero-gradient" style={{
+          minHeight: '100vh', position: 'relative', overflow: 'hidden',
+          display: 'flex', alignItems: 'center',
+          padding: '8rem 1.5rem 6rem',
+        }}>
+          {/* Scanlines */}
+          <div className="scanlines-overlay" />
 
-          {/* Palm silhouettes */}
-          <PalmSilhouette side="left" />
-          <PalmSilhouette side="right" />
+          {/* Horizon glow */}
+          <div className="horizon-line" />
 
-          {/* Top ambient glow — purple/pink nebula */}
+          {/* Left decorative vertical text */}
           <div style={{
-            position: 'absolute', top: '-200px', left: '50%', transform: 'translateX(-50%)',
-            width: '1100px', height: '600px',
-            background: 'radial-gradient(ellipse, rgba(155,47,255,0.1) 0%, rgba(255,45,123,0.06) 35%, transparent 70%)',
-            pointerEvents: 'none',
+            position: 'absolute', left: 'clamp(1rem, 3vw, 2.5rem)', top: '50%',
+            transform: 'translateY(-50%) rotate(-90deg)',
+            transformOrigin: 'center center',
+            fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+            fontSize: '0.6rem', letterSpacing: '0.4em', textTransform: 'uppercase',
+            color: 'rgba(255, 45, 123, 0.08)',
+            whiteSpace: 'nowrap', pointerEvents: 'none',
+          }}>
+            VICE CITY &middot; LEONIDA &middot; 2026
+          </div>
+
+          {/* Ambient glows */}
+          <div style={{ position: 'absolute', top: '-15%', left: '50%', transform: 'translateX(-50%)', width: '1000px', height: '600px', background: 'radial-gradient(ellipse, rgba(155,47,255,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', bottom: '5%', left: '50%', transform: 'translateX(-50%)', width: '1200px', height: '400px', background: 'radial-gradient(ellipse, rgba(255,107,26,0.08) 0%, transparent 60%)', pointerEvents: 'none' }} />
+
+          {/* Grid dots decoration — right side */}
+          <div style={{
+            position: 'absolute', right: 'clamp(1rem, 5vw, 4rem)', top: '50%', transform: 'translateY(-50%)',
+            width: '120px', height: '200px',
+            backgroundImage: 'radial-gradient(circle, rgba(255,45,123,0.1) 1px, transparent 1px)',
+            backgroundSize: '16px 16px',
+            pointerEvents: 'none', opacity: 0.5,
           }} />
 
-          {/* Warm sunset glow at horizon */}
-          <div style={{
-            position: 'absolute', top: '60%', left: '50%', transform: 'translate(-50%, -50%)',
-            width: '1400px', height: '500px',
-            background: 'radial-gradient(ellipse, rgba(255,107,26,0.1) 0%, rgba(255,45,123,0.05) 40%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
-
-          <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-            <p className="cat-badge fade-up neon-text-pink" style={{ color: '#FF2D7B', marginBottom: '1.25rem', display: 'block', fontSize: '0.7rem' }}>
-              Sveriges #1 GTA 6-sajt
+          <div className="max-w-5xl mx-auto" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+            {/* Eyebrow */}
+            <p className="fade-up neon-text-cyan" style={{
+              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase',
+              color: '#00F5FF', marginBottom: '1.5rem',
+            }}>
+              Sverige &middot; Grand Theft Auto VI
             </p>
 
-            {/* Main title — cinematic scale */}
-            <h1 className="fade-up-delay" style={{
+            {/* Main title */}
+            <h1 className="fade-up-d1" style={{
               fontFamily: 'Bebas Neue, sans-serif',
-              fontSize: 'clamp(4.5rem, 14vw, 11rem)',
-              letterSpacing: '0.08em',
-              lineHeight: 0.9,
-              background: 'linear-gradient(135deg, #FF6B9D 0%, #FF8C42 35%, #FFD166 70%, #FFE4A0 100%)',
+              fontSize: 'clamp(4.5rem, 15vw, 11rem)',
+              letterSpacing: '0.06em',
+              lineHeight: 0.88,
+              background: 'linear-gradient(135deg, #FF6B9D 0%, #FF8C42 35%, #FFD166 70%, #FFE8AA 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              marginBottom: '1.5rem',
-              filter: 'drop-shadow(0 0 40px rgba(255, 107, 157, 0.35)) drop-shadow(0 0 80px rgba(255, 140, 66, 0.2)) drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
+              marginBottom: '1.25rem',
+              filter: 'drop-shadow(0 0 40px rgba(255,107,157,0.3)) drop-shadow(0 0 80px rgba(255,140,66,0.15))',
             }}>
               GRAND THEFT<br />AUTO VI
             </h1>
 
-            {/* Subtitle — neon cyan small caps */}
-            <p className="fade-up-delay-2 neon-text-cyan" style={{
-              fontFamily: 'Barlow Condensed, sans-serif',
-              fontWeight: 700,
-              fontSize: 'clamp(0.65rem, 1.5vw, 0.85rem)',
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: '#00F5FF',
-              marginBottom: '2rem',
+            {/* Divider */}
+            <div className="fade-up-d2" style={{
+              width: '80px', height: '2px', marginBottom: '1.5rem',
+              background: 'linear-gradient(90deg, #FF2D7B, #FF6B1A, #FFD166)',
+              boxShadow: '0 0 12px rgba(255,107,26,0.4)',
+            }} />
+
+            {/* Release info */}
+            <p className="fade-up-d2 neon-text-gold" style={{
+              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontSize: 'clamp(0.75rem, 1.5vw, 0.95rem)',
+              letterSpacing: '0.3em', textTransform: 'uppercase',
+              color: '#FFD166', marginBottom: '2rem',
             }}>
-              19 November 2026 &middot; Vice City &middot; PS5 &middot; Xbox Series X
+              19 &middot; NOV &middot; 2026
             </p>
 
-            {/* Countdown widget */}
-            <div className="fade-up-delay-3" style={{ marginBottom: '2.5rem' }}>
-              <Countdown />
+            {/* Countdown */}
+            <div className="fade-up-d3" style={{ marginBottom: '2.5rem' }}>
+              <CountdownHero />
             </div>
 
-            {/* Description */}
-            <p className="fade-up-delay-3" style={{ color: '#8A7A90', fontSize: '1rem', maxWidth: '520px', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Nyheter, guider, karaktärsanalyser och release-information — allt om GTA 6 på svenska.
-            </p>
-
-            {/* Category pills — neon buttons */}
-            <div className="fade-up-delay-4" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.7rem' }}>
-              {categoryNav.map(cat => (
-                <Link key={cat.href} href={cat.href} className="article-card" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                  padding: '0.6rem 1.4rem',
-                  border: `1px solid ${cat.color}35`,
-                  borderRadius: '4px',
-                  color: cat.color,
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  textDecoration: 'none',
-                  background: `linear-gradient(135deg, ${cat.color}0A, ${cat.color}04)`,
-                  backdropFilter: 'blur(8px)',
-                  transition: 'all 0.3s ease',
-                }}>
-                  {cat.label}
-                </Link>
-              ))}
+            {/* CTA buttons */}
+            <div className="fade-up-d4" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <Link href="/nyheter" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.65rem 1.5rem',
+                background: 'rgba(255,45,123,0.12)', border: '1px solid rgba(255,45,123,0.35)',
+                borderRadius: '2px', color: '#FF2D7B',
+                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                textDecoration: 'none', transition: 'all 0.3s',
+              }}>
+                Senaste nytt <span style={{ fontSize: '1rem' }}>&rarr;</span>
+              </Link>
+              <Link href="/guider" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.65rem 1.5rem',
+                background: 'transparent', border: '1px solid rgba(0,245,255,0.25)',
+                borderRadius: '2px', color: '#00F5FF',
+                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                textDecoration: 'none', transition: 'all 0.3s',
+              }}>
+                Komplett guide <span style={{ fontSize: '1rem' }}>&rarr;</span>
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* ═══ Category cards strip ═══ */}
-        <section style={{ background: '#0D080A', borderTop: '1px solid rgba(255,45,123,0.08)', borderBottom: '1px solid rgba(255,45,123,0.08)' }}>
-          <div className="max-w-6xl mx-auto px-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
-            {categoryNav.map((cat, i) => (
+        {/* ═══ CATEGORY GRID — 2x2 mobile, 4-col desktop ═══ */}
+        <section style={{ background: '#0A0710', borderTop: '1px solid rgba(255,45,123,0.06)', borderBottom: '1px solid rgba(255,45,123,0.06)' }}>
+          <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4">
+            {cats.map((cat, i) => (
               <Link key={cat.href} href={cat.href}
+                className="article-card block"
                 style={{
-                  padding: '1.75rem 1rem',
-                  borderRight: i < 3 ? '1px solid rgba(255,255,255,0.03)' : 'none',
+                  padding: '2rem 1.25rem',
+                  borderRight: (i < 3 && i !== 1) ? '1px solid rgba(255,255,255,0.03)' : (i === 1 ? '1px solid rgba(255,255,255,0.03)' : 'none'),
                   textDecoration: 'none',
-                  transition: 'all 0.3s ease',
-                  display: 'block',
-                  position: 'relative',
-                }}
-                className="hover:bg-white/[0.02]">
-                <span className="cat-badge" style={{ color: cat.color, display: 'block', marginBottom: '0.4rem', textShadow: `0 0 12px ${cat.color}50` }}>{cat.label}</span>
-                <span style={{ fontSize: '0.75rem', color: '#554A58' }}>{cat.desc}</span>
+                }}>
+                <span style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2rem', color: cat.color, display: 'block', marginBottom: '0.4rem', textShadow: `0 0 20px ${cat.color}30`, lineHeight: 1 }}>
+                  {cat.label}
+                </span>
+                <span style={{ fontSize: '0.75rem', color: '#4A3E55', display: 'block', lineHeight: 1.5 }}>{cat.desc}</span>
               </Link>
             ))}
           </div>
         </section>
 
-        {/* ═══ Articles ═══ */}
+        {/* ═══ FEATURED ARTICLE ═══ */}
         <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-          {/* Featured article */}
           {featured && (
             <section style={{ marginBottom: '4rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>
                 <span className="accent-line" />
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5A4E60' }}>
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55' }}>
                   Senaste
                 </span>
               </div>
@@ -185,30 +169,21 @@ export default function HomePage() {
             </section>
           )}
 
-          {/* Recent articles grid */}
+          {/* ═══ ARTICLE GRID ═══ */}
           {recent.length > 0 && (
             <section>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>
                 <span className="accent-line" />
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#5A4E60' }}>
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55' }}>
                   Fler artiklar
                 </span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.25rem' }}>
-                {recent.map(article => (
-                  <ArticleCard key={`${article.category}-${article.slug}`} article={article} />
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
+                {recent.map(a => (
+                  <ArticleCard key={`${a.category}-${a.slug}`} article={a} />
                 ))}
               </div>
             </section>
-          )}
-
-          {/* Empty state */}
-          {articles.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '5rem 0', color: '#444' }}>
-              <p style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2rem', color: '#2A2A2A' }}>
-                Innehåll laddas snart
-              </p>
-            </div>
           )}
         </div>
       </main>

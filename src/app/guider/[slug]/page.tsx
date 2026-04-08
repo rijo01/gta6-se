@@ -1,55 +1,88 @@
-import { getArticleWithHtml, getArticlesByCategory } from '@/lib/content'
+import { getArticleWithHtml, getArticlesByCategory, categoryColors } from '@/lib/content'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ShareButtons from '@/components/ShareButtons'
+import ArticleCard from '@/components/ArticleCard'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+
+const CAT = 'guider' as const
+const CAT_LABEL = 'Guider'
+const CAT_COLOR = categoryColors[CAT]
 
 interface Props { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  return getArticlesByCategory('guider').map(a => ({ slug: a.slug }))
+  return getArticlesByCategory(CAT).map(a => ({ slug: a.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const article = await getArticleWithHtml('guider', slug)
-  if (!article) return {}
-  return { title: article.title, description: article.description }
+  const a = await getArticleWithHtml(CAT, slug)
+  if (!a) return {}
+  return { title: a.title, description: a.description }
 }
 
-function formatDate(d: string) {
-  try { return new Date(d).toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' }) }
-  catch { return d }
+function fmtDate(d: string) {
+  try { return new Date(d).toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' }) } catch { return d }
 }
 
 export default async function GuiderArticle({ params }: Props) {
   const { slug } = await params
-  const article = await getArticleWithHtml('guider', slug)
+  const article = await getArticleWithHtml(CAT, slug)
   if (!article) notFound()
+  const related = getArticlesByCategory(CAT).filter(a => a.slug !== slug).slice(0, 3)
+
   return (
     <>
       <Header />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'HowTo',
-        name: article.title, description: article.description,
-        inLanguage: 'sv-SE',
-      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'HowTo', name: article.title, description: article.description, inLanguage: 'sv-SE' }) }} />
       <main style={{ paddingTop: '56px' }}>
-        <section style={{ padding: '3rem 1rem 2rem', borderBottom: '1px solid rgba(0,245,255,0.08)', background: 'linear-gradient(180deg, #110810 0%, #0A0609 100%)' }}>
-          <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-            <span className="cat-badge neon-text-cyan" style={{ color: '#00F5FF', display: 'block', marginBottom: '0.75rem' }}>Guider</span>
-            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', lineHeight: 1.05, color: '#F0E8F4', marginBottom: '1rem' }}>{article.title}</h1>
-            <p style={{ color: '#7A6E80', fontSize: '1rem', marginBottom: '1.25rem' }}>{article.description}</p>
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <span style={{ width: 32, height: 1, background: '#00F5FF', display: 'block', boxShadow: '0 0 8px rgba(0,245,255,0.4)' }} />
-              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.7rem', color: '#5A4E60', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{formatDate(article.date)}</span>
+        {/* Article header */}
+        <section style={{ padding: '3.5rem 1rem 2.5rem', position: 'relative', overflow: 'hidden', background: `linear-gradient(180deg, #100C15 0%, #07040A 100%)`, borderBottom: `1px solid ${CAT_COLOR}15` }}>
+          <div style={{ position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: `radial-gradient(ellipse, ${CAT_COLOR}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
+          <div style={{ maxWidth: '740px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            {/* Breadcrumb */}
+            <nav style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#3A2E45', marginBottom: '1.25rem' }}>
+              <Link href="/" style={{ color: '#3A2E45', textDecoration: 'none' }}>Hem</Link>
+              <span style={{ margin: '0 0.4rem' }}>&rsaquo;</span>
+              <Link href={`/${CAT}`} style={{ color: CAT_COLOR, textDecoration: 'none', opacity: 0.6 }}>{CAT_LABEL}</Link>
+            </nav>
+            <span className="cat-badge neon-text-cyan" style={{ color: CAT_COLOR, display: 'inline-block', marginBottom: '0.9rem', background: `${CAT_COLOR}0A`, padding: '0.2rem 0.6rem', borderRadius: '2px' }}>{CAT_LABEL}</span>
+            <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', lineHeight: 1.05, color: '#F0E8F8', marginBottom: '1rem' }}>{article.title}</h1>
+            <p style={{ color: '#7A6880', fontSize: '1rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>{article.description}</p>
+            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+              <span style={{ width: 28, height: 2, background: CAT_COLOR, boxShadow: `0 0 8px ${CAT_COLOR}60` }} />
+              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.67rem', color: '#4A3E55', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{fmtDate(article.date)}</span>
+              {article.readTime && (
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.6rem', color: CAT_COLOR, fontWeight: 700, letterSpacing: '0.1em', padding: '0.12rem 0.5rem', border: `1px solid ${CAT_COLOR}25`, borderRadius: '2px', background: `${CAT_COLOR}08` }}>{article.readTime} MIN</span>
+              )}
             </div>
           </div>
         </section>
-        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '2.5rem 1rem 4rem' }}>
+
+        {/* Article content */}
+        <div style={{ maxWidth: '740px', margin: '0 auto', padding: '2.5rem 1rem 3rem' }}>
           <div className="prose-gta" dangerouslySetInnerHTML={{ __html: article.content }} />
-          <ShareButtons title={article.title} category="guider" slug={article.slug} />
+          <ShareButtons title={article.title} category={CAT} slug={article.slug} />
+
+          {/* Related */}
+          {related.length > 0 && (
+            <section style={{ marginTop: '3.5rem', paddingTop: '2.5rem', borderTop: '1px solid #1A1325' }}>
+              <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55', display: 'block', marginBottom: '1.25rem' }}>Relaterade artiklar</span>
+              <div style={{ display: 'grid', gap: '0.75rem' }}>
+                {related.map(r => <ArticleCard key={r.slug} article={r} />)}
+              </div>
+            </section>
+          )}
+
+          {/* Back link */}
+          <div style={{ marginTop: '2.5rem' }}>
+            <Link href={`/${CAT}`} style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: CAT_COLOR, textDecoration: 'none', opacity: 0.7, transition: 'opacity 0.2s' }}>
+              &larr; Tillbaka till {CAT_LABEL}
+            </Link>
+          </div>
         </div>
       </main>
       <Footer />

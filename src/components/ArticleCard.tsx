@@ -1,168 +1,80 @@
 import Link from 'next/link'
 import { Article, categoryLabels, categoryColors } from '@/lib/content'
 
-interface ArticleCardProps {
-  article: Article
-  featured?: boolean
+interface Props { article: Article; featured?: boolean }
+
+function fmtDate(d: string) {
+  try { return new Date(d).toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' }) }
+  catch { return d }
 }
 
-function formatDate(dateStr: string) {
-  try {
-    return new Date(dateStr).toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' })
-  } catch { return dateStr }
-}
-
-export default function ArticleCard({ article, featured = false }: ArticleCardProps) {
-  const catColor = categoryColors[article.category]
-  const catLabel = categoryLabels[article.category]
+export default function ArticleCard({ article, featured = false }: Props) {
+  const c = categoryColors[article.category]
+  const label = categoryLabels[article.category]
 
   if (featured) {
     return (
-      <Link href={`/${article.category}/${article.slug}`}
-        className="article-card block"
-        style={{
-          background: `linear-gradient(135deg, rgba(17, 8, 16, 0.95) 0%, rgba(13, 8, 10, 0.98) 60%, ${catColor}08 100%)`,
-          border: '1px solid rgba(255, 255, 255, 0.05)',
-          borderLeft: `4px solid ${catColor}`,
-          borderRadius: '6px',
-          padding: '2.5rem',
-          textDecoration: 'none',
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-        {/* Dramatic gradient overlay */}
-        <div style={{
-          position: 'absolute', top: 0, right: 0, bottom: 0, width: '40%',
-          background: `linear-gradient(135deg, transparent 0%, ${catColor}06 100%)`,
-          pointerEvents: 'none',
-        }} />
-
-        <span className="cat-badge" style={{
-          color: catColor,
-          display: 'inline-block',
-          marginBottom: '1rem',
-          textShadow: `0 0 12px ${catColor}50`,
-          position: 'relative',
-        }}>
-          {catLabel}
+      <Link href={`/${article.category}/${article.slug}`} className="article-card block" style={{
+        background: `linear-gradient(135deg, #100C15 0%, #0D0918 70%, ${c}06 100%)`,
+        border: `1px solid #1A1325`,
+        borderLeft: `3px solid ${c}`,
+        borderRadius: '2px',
+        padding: 'clamp(1.75rem, 3vw, 2.75rem)',
+        textDecoration: 'none', position: 'relative', overflow: 'hidden',
+      }}>
+        <span className="cat-badge" style={{ color: c, display: 'inline-block', marginBottom: '1rem', textShadow: `0 0 10px ${c}40`, background: `${c}0A`, padding: '0.2rem 0.6rem', borderRadius: '2px' }}>
+          {label}
         </span>
-
-        <h2 style={{
-          fontFamily: 'Bebas Neue, sans-serif',
-          fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-          letterSpacing: '0.04em',
-          lineHeight: 1.05,
-          color: '#F0E8F4',
-          marginBottom: '1rem',
-          position: 'relative',
-        }}>
+        <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2rem, 4vw, 2.8rem)', letterSpacing: '0.03em', lineHeight: 1.05, color: '#F0E8F8', marginBottom: '0.9rem' }}>
           {article.title}
         </h2>
-
-        <p style={{ fontSize: '0.9rem', color: '#8A7E90', lineHeight: 1.65, marginBottom: '1.5rem', maxWidth: '600px', position: 'relative' }}>
+        <p style={{ fontSize: '0.9rem', color: '#8A7E95', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: '620px' }}>
           {article.description}
         </p>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', position: 'relative' }}>
-          <span style={{
-            width: 28, height: 2, background: catColor, display: 'block',
-            boxShadow: `0 0 8px ${catColor}60`,
-          }} />
-          <span style={{ fontSize: '0.7rem', color: '#5A4E60', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            {formatDate(article.date)}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <span style={{ width: 28, height: 2, background: c, boxShadow: `0 0 8px ${c}60` }} />
+          <span style={{ fontSize: '0.67rem', color: '#5A4E60', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            {fmtDate(article.date)}
           </span>
           {article.readTime && (
             <>
-              <span style={{ color: '#2A222E' }}>&middot;</span>
-              <span style={{
-                fontSize: '0.65rem',
-                color: catColor,
-                fontFamily: 'Barlow Condensed, sans-serif',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                padding: '0.2rem 0.6rem',
-                border: `1px solid ${catColor}30`,
-                borderRadius: '20px',
-                background: `${catColor}08`,
-              }}>
-                {article.readTime} min
+              <span style={{ color: '#1A1325' }}>&middot;</span>
+              <span style={{ fontSize: '0.6rem', color: c, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, letterSpacing: '0.1em', padding: '0.15rem 0.55rem', border: `1px solid ${c}25`, borderRadius: '2px', background: `${c}08` }}>
+                {article.readTime} MIN
               </span>
             </>
           )}
+        </div>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginTop: '1.5rem', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: c }}>
+          Läsa mer <span style={{ fontSize: '1rem' }}>&rarr;</span>
         </div>
       </Link>
     )
   }
 
   return (
-    <Link href={`/${article.category}/${article.slug}`}
-      className="article-card block"
-      style={{
-        background: 'linear-gradient(145deg, rgba(17, 8, 16, 0.9) 0%, rgba(13, 8, 10, 0.95) 100%)',
-        border: '1px solid rgba(255, 255, 255, 0.04)',
-        borderLeft: `4px solid ${catColor}`,
-        borderRadius: '6px',
-        padding: '1.5rem 1.5rem 1.5rem 1.75rem',
-        textDecoration: 'none',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-
-      {/* Category */}
-      <span className="cat-badge" style={{
-        color: catColor,
-        display: 'block',
-        marginBottom: '0.75rem',
-        textShadow: `0 0 10px ${catColor}40`,
-      }}>
-        {catLabel}
+    <Link href={`/${article.category}/${article.slug}`} className="article-card vice-card block" style={{
+      borderLeft: `3px solid ${c}`,
+      padding: '1.4rem 1.5rem 1.4rem 1.65rem',
+      textDecoration: 'none', position: 'relative', overflow: 'hidden',
+    }}>
+      <span className="cat-badge" style={{ color: c, display: 'inline-block', marginBottom: '0.65rem', textShadow: `0 0 8px ${c}30`, background: `${c}08`, padding: '0.15rem 0.5rem', borderRadius: '2px' }}>
+        {label}
       </span>
-
-      {/* Title */}
-      <h2 style={{
-        fontFamily: 'Bebas Neue, sans-serif',
-        fontSize: '1.5rem',
-        letterSpacing: '0.03em',
-        lineHeight: 1.08,
-        color: '#F0E8F4',
-        marginBottom: '0.7rem',
-      }}>
+      <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.4rem', letterSpacing: '0.03em', lineHeight: 1.08, color: '#F0E8F8', marginBottom: '0.6rem', transition: 'color 0.25s' }}>
         {article.title}
       </h2>
-
-      {/* Description */}
-      <p style={{ fontSize: '0.82rem', color: '#7A6E80', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+      <p style={{ fontSize: '0.82rem', color: '#7A6880', lineHeight: 1.6, marginBottom: '1.1rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
         {article.description}
       </p>
-
-      {/* Meta */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <span style={{
-          width: 20, height: 1.5, background: catColor, display: 'block',
-          boxShadow: `0 0 6px ${catColor}60`,
-        }} />
-        <span style={{ fontSize: '0.68rem', color: '#5A4E60', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          {formatDate(article.date)}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span style={{ fontSize: '0.65rem', color: '#4A3E55', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          {fmtDate(article.date)}
         </span>
         {article.readTime && (
-          <>
-            <span style={{ color: '#2A222E' }}>&middot;</span>
-            <span style={{
-              fontSize: '0.6rem',
-              color: catColor,
-              fontFamily: 'Barlow Condensed, sans-serif',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              padding: '0.15rem 0.5rem',
-              border: `1px solid ${catColor}25`,
-              borderRadius: '20px',
-              background: `${catColor}06`,
-            }}>
-              {article.readTime} min
-            </span>
-          </>
+          <span style={{ fontSize: '0.58rem', color: c, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, letterSpacing: '0.1em', padding: '0.12rem 0.5rem', border: `1px solid ${c}20`, borderRadius: '2px', background: `${c}06` }}>
+            {article.readTime} MIN
+          </span>
         )}
       </div>
     </Link>
