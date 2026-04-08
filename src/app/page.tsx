@@ -1,17 +1,15 @@
-import { getAllArticles } from '@/lib/content'
+import { getAllArticles, getArticlesByCategory } from '@/lib/content'
 import ArticleCard from '@/components/ArticleCard'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CountdownHero from '@/components/CountdownHero'
-import CitySkyline from '@/components/CitySkyline'
-import NeonSign from '@/components/NeonSign'
 import Link from 'next/link'
 
 const cats = [
-  { href: '/nyheter', label: 'Nyheter', desc: 'Trailers, tillkännagivanden och uppdateringar', color: '#FF2D7B' },
-  { href: '/guider', label: 'Guider', desc: 'Tips, tricks och djupgående spelguider', color: '#00F5FF' },
-  { href: '/karaktarer', label: 'Karaktärer', desc: 'Lucia, Jason och Vice Citys invånare', color: '#9B2FFF' },
-  { href: '/release', label: 'Release', desc: 'Datum, plattformar och förbeställningar', color: '#FF6B1A' },
+  { href: '/nyheter', label: 'Nyheter', num: '01', desc: 'Trailers, tillkännagivanden och Rockstar-uppdateringar', color: '#FF2D7B', cat: 'nyheter' as const },
+  { href: '/guider', label: 'Guider', num: '02', desc: 'Tips, tricks och djupgående spelguider för Vice City', color: '#00F5FF', cat: 'guider' as const },
+  { href: '/karaktarer', label: 'Karaktärer', num: '03', desc: 'Lucia, Jason och alla invånare i Vice City', color: '#9B2FFF', cat: 'karaktarer' as const },
+  { href: '/release', label: 'Release', num: '04', desc: 'Datum, plattformar, pris och förbeställningar', color: '#FF6B1A', cat: 'release' as const },
 ]
 
 export default function HomePage() {
@@ -22,72 +20,87 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '88px' }}> {/* 32px ticker + 56px header */}
+      <main style={{ paddingTop: '88px' }}>
 
-        {/* ═══════════════════════════════════════════
-            HERO — ENTER VICE CITY
-            Layered cinematic sunset skyline
-            ═══════════════════════════════════════════ */}
-        <section className="vc-sky vc-stars" style={{
+        {/* ═══ HERO — Clean cinematic sunset ═══ */}
+        <section className="hero-gradient" style={{
           minHeight: '100vh', position: 'relative', overflow: 'hidden',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: '6rem 1.5rem 4rem',
         }}>
-          {/* Scanlines overlay */}
-          <div className="scanlines-overlay" style={{ zIndex: 3 }} />
+          {/* Scanlines */}
+          <div className="scanlines-overlay" />
 
-          {/* City silhouette */}
-          <CitySkyline />
-
-          {/* Neon ground glow */}
+          {/* Horizon radial glow */}
           <div style={{
-            position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
-            width: '120%', height: '20%',
-            background: 'radial-gradient(ellipse 60% 100% at 50% 100%, rgba(255,107,26,0.12) 0%, rgba(255,45,123,0.06) 40%, transparent 70%)',
+            position: 'absolute', bottom: '5%', left: '50%', transform: 'translateX(-50%)',
+            width: '140%', height: '35%',
+            background: 'radial-gradient(ellipse 70% 100% at 50% 100%, rgba(255,107,26,0.25) 0%, rgba(255,68,0,0.1) 40%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
+
+          {/* Bottom fade to dark */}
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: '20%',
+            background: 'linear-gradient(180deg, transparent 0%, #07040A 100%)',
             pointerEvents: 'none', zIndex: 3,
           }} />
 
           {/* Content */}
           <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', maxWidth: '800px' }}>
-            {/* Welcome */}
+
             <p className="fade-up neon-text-cyan" style={{
               fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
-              fontSize: '0.62rem', letterSpacing: '0.4em', textTransform: 'uppercase',
-              color: '#00F5FF', marginBottom: '1rem', opacity: 0.7,
+              fontSize: '0.7rem', letterSpacing: '0.4em', textTransform: 'uppercase',
+              color: '#00F5FF', marginBottom: '1.25rem',
             }}>
-              Välkommen till
+              Sveriges #1 sajt om
             </p>
 
-            {/* VICE CITY — massive neon pink */}
             <h1 className="fade-up-d1" style={{
               fontFamily: 'Bebas Neue, sans-serif',
-              fontSize: 'clamp(4rem, 14vw, 10rem)',
-              letterSpacing: '0.08em',
-              lineHeight: 0.9,
-              color: '#FF2D7B',
-              textShadow: '0 0 20px #FF2D7B, 0 0 60px rgba(255,45,123,0.5), 0 0 120px rgba(255,45,123,0.2)',
-              marginBottom: '1.25rem',
-              animation: 'glow-pulse-text 3s ease-in-out infinite alternate',
+              fontSize: 'clamp(6rem, 18vw, 13rem)',
+              letterSpacing: '0.06em',
+              lineHeight: 0.85,
+              background: 'linear-gradient(135deg, #FF2D7B 0%, #FF6B1A 45%, #FFD166 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              marginBottom: '0.5rem',
+              filter: 'drop-shadow(0 0 30px rgba(255,45,123,0.3)) drop-shadow(0 0 60px rgba(255,107,26,0.15))',
             }}>
-              VICE CITY
+              GTA 6
             </h1>
 
-            {/* Divider line */}
+            <p className="fade-up-d1" style={{
+              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontSize: '1rem', letterSpacing: '0.5em', textTransform: 'uppercase',
+              color: '#FFD166', opacity: 0.8, marginBottom: '2rem',
+            }}>
+              Grand Theft Auto VI
+            </p>
+
+            {/* Divider */}
             <div className="fade-up-d2" style={{
-              width: '100%', maxWidth: '400px', height: '1px', margin: '0 auto 1.5rem',
-              background: 'linear-gradient(90deg, transparent, #FF2D7B 20%, #FF6B1A 50%, #00F5FF 80%, transparent)',
-              boxShadow: '0 0 8px rgba(255,107,26,0.3)',
+              width: '100%', maxWidth: '320px', height: '1px', margin: '0 auto 2rem',
+              background: 'linear-gradient(90deg, transparent, #FF6B1A 50%, transparent)',
             }} />
 
-            {/* Subtitle */}
-            <p className="fade-up-d2 neon-text-gold" style={{
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
-              fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)',
-              letterSpacing: '0.3em', textTransform: 'uppercase',
-              color: '#FFD166', marginBottom: '2.5rem',
+            {/* Release badge */}
+            <div className="fade-up-d2" style={{
+              display: 'inline-block', padding: '0.5rem 1.5rem', marginBottom: '2.5rem',
+              background: 'rgba(13,10,18,0.8)', border: '1px solid rgba(255,107,26,0.4)',
+              borderRadius: '2px',
             }}>
-              Grand Theft Auto VI &middot; 19 November 2026
-            </p>
+              <span style={{
+                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontSize: '0.85rem', letterSpacing: '0.25em', textTransform: 'uppercase',
+                color: '#FFD166',
+              }}>
+                19 November 2026
+              </span>
+            </div>
+
+            <br />
 
             {/* Countdown */}
             <div className="fade-up-d3" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
@@ -97,25 +110,24 @@ export default function HomePage() {
             {/* CTA buttons */}
             <div className="fade-up-d4" style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/nyheter" style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                padding: '0.65rem 1.6rem',
-                background: 'rgba(255,45,123,0.15)', border: '1px solid rgba(255,45,123,0.4)',
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                padding: '0.6rem 1.5rem',
+                background: 'rgba(255,45,123,0.1)', border: '1px solid rgba(255,45,123,0.35)',
                 borderRadius: '2px', color: '#FF2D7B',
                 fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
                 fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase',
-                textDecoration: 'none', transition: 'all 0.3s',
-                boxShadow: '0 0 15px rgba(255,45,123,0.1)',
+                textDecoration: 'none', transition: 'all 0.25s',
               }}>
                 Senaste nytt &rarr;
               </Link>
               <Link href="/guider" style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                padding: '0.65rem 1.6rem',
-                background: 'transparent', border: '1px solid rgba(0,245,255,0.3)',
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                padding: '0.6rem 1.5rem',
+                background: 'transparent', border: '1px solid rgba(0,245,255,0.25)',
                 borderRadius: '2px', color: '#00F5FF',
                 fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
                 fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase',
-                textDecoration: 'none', transition: 'all 0.3s',
+                textDecoration: 'none', transition: 'all 0.25s',
               }}>
                 Komplett guide &rarr;
               </Link>
@@ -123,32 +135,49 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ═══ CATEGORY GRID ═══ */}
-        <section className="wet-asphalt" style={{ borderTop: '1px solid rgba(255,45,123,0.06)', borderBottom: '1px solid rgba(255,45,123,0.06)' }}>
-          <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4">
-            {cats.map((cat, i) => (
-              <Link key={cat.href} href={cat.href} className="article-card block" style={{
-                padding: '2rem 1.25rem', textDecoration: 'none',
-                borderRight: i < 3 ? '1px solid rgba(255,255,255,0.03)' : 'none',
-              }}>
-                <span style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2rem', color: cat.color, display: 'block', marginBottom: '0.4rem', textShadow: `0 0 20px ${cat.color}30`, lineHeight: 1 }}>
-                  {cat.label}
-                </span>
-                <span style={{ fontSize: '0.72rem', color: '#4A3E55', display: 'block', lineHeight: 1.5 }}>{cat.desc}</span>
-              </Link>
-            ))}
+        {/* ═══ CATEGORY SECTION — horizontal cards ═══ */}
+        <section style={{ background: '#07040A' }}>
+          <div className="max-w-6xl mx-auto px-4 py-2">
+            {cats.map((cat) => {
+              const count = getArticlesByCategory(cat.cat).length
+              return (
+                <Link key={cat.href} href={cat.href} className="article-card block" style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '1.5rem 1.25rem',
+                  borderBottom: `1px solid ${cat.color}20`,
+                  textDecoration: 'none', position: 'relative', overflow: 'hidden',
+                  background: `linear-gradient(90deg, ${cat.color}03, transparent)`,
+                  transition: 'background 0.25s',
+                }}>
+                  {/* Faded number */}
+                  <span style={{
+                    position: 'absolute', left: '0.5rem', top: '50%', transform: 'translateY(-50%)',
+                    fontFamily: 'Bebas Neue, sans-serif', fontSize: '4rem', color: 'rgba(255,255,255,0.025)',
+                    lineHeight: 1, pointerEvents: 'none',
+                  }}>
+                    {cat.num}
+                  </span>
+
+                  <div style={{ paddingLeft: '3rem', position: 'relative', zIndex: 1 }}>
+                    <span style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.8rem', color: cat.color, display: 'block', lineHeight: 1, marginBottom: '0.25rem' }}>
+                      {cat.label}
+                    </span>
+                    <span style={{ fontSize: '0.75rem', color: '#5A4E60', display: 'block', lineHeight: 1.4 }}>
+                      {cat.desc} &middot; <span style={{ color: cat.color, opacity: 0.6 }}>{count} artiklar</span>
+                    </span>
+                  </div>
+
+                  <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '1.2rem', color: cat.color, opacity: 0.5, transition: 'transform 0.25s, opacity 0.25s' }}>
+                    &rarr;
+                  </span>
+                </Link>
+              )
+            })}
           </div>
         </section>
 
-        {/* ═══ NEON SIGNS DECORATION ═══ */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(1rem, 4vw, 3rem)', padding: '2.5rem 1rem', flexWrap: 'wrap', opacity: 0.6 }}>
-          <NeonSign text="OPEN 24/7" color="cyan" size="1rem" />
-          <NeonSign text="VICE CITY" color="pink" size="1rem" />
-          <NeonSign text="NO VACANCY" color="orange" size="1rem" />
-        </div>
-
         {/* ═══ ARTICLES ═══ */}
-        <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+        <div className="max-w-6xl mx-auto px-4" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
           {featured && (
             <section style={{ marginBottom: '4rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>

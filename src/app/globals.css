@@ -4,52 +4,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ═══════════════════════════════════════════════════════════
-   GTA6.SE — VICE CITY DESIGN SYSTEM
-   Inspired by GTA 6 Trailers, Rockstar editorial, Miami nights
-   ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   GTA6.SE — CLEAN VICE CITY DESIGN SYSTEM
+   Premium editorial. No gimmicks.
+   ═══════════════════════════════════════════════ */
 
 :root {
-  /* Sunset palette */
   --vc-sunset-1: #FF2D7B;
   --vc-sunset-2: #FF6B1A;
   --vc-sunset-3: #FFD166;
-  /* Night palette */
   --vc-night-1: #00F5FF;
   --vc-night-2: #9B2FFF;
-  /* Dark palette */
   --vc-dark-1: #07040A;
-  --vc-dark-2: #100C15;
+  --vc-dark-2: #0D0A12;
   --vc-dark-3: #1A1325;
-  /* Type */
   --font-display: 'Bebas Neue', sans-serif;
   --font-body: 'Barlow', sans-serif;
   --font-ui: 'Barlow Condensed', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--vc-dark-1);
+  background: var(--vc-dark-1);
   color: #E8DFF0;
   font-family: var(--font-body);
   font-weight: 300;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Scrollbar ─────────────────────────────── */
+::selection { background: rgba(255,45,123,0.25); color: #fff; }
+
+/* ─── Scrollbar ──────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--vc-dark-1); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--vc-sunset-1), var(--vc-sunset-2));
-  border-radius: 10px;
-}
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--vc-sunset-1), var(--vc-sunset-2)); border-radius: 10px; }
 
-/* ─── Noise overlay ─────────────────────────── */
+/* ─── Noise overlay ──────────────────── */
 body::before {
   content: '';
   position: fixed;
@@ -57,52 +50,15 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
-/* ─── Typography ────────────────────────────── */
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  letter-spacing: 0.04em;
-  line-height: 1.1;
-}
+/* ─── Typography ─────────────────────── */
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.04em; line-height: 1.1; }
 
-::selection {
-  background: rgba(255, 45, 123, 0.3);
-  color: #fff;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   KEYFRAME ANIMATIONS
-   ═══════════════════════════════════════════════════════════ */
-
-@keyframes neon-flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 7px currentColor, 0 0 21px currentColor, 0 0 42px currentColor;
-  }
-  20%, 24%, 55% {
-    opacity: 0.4;
-    text-shadow: none;
-  }
-}
-.neon-flicker { animation: neon-flicker 5s ease-in-out infinite; }
-
-@keyframes scanlines {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(4px); }
-}
-
-@keyframes horizon-pulse {
-  0%, 100% { opacity: 0.6; box-shadow: 0 0 30px rgba(255,140,66,0.3), 0 0 60px rgba(255,107,26,0.15); }
-  50% { opacity: 1; box-shadow: 0 0 50px rgba(255,140,66,0.5), 0 0 100px rgba(255,107,26,0.25), 0 0 150px rgba(255,45,123,0.1); }
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.float-slow { animation: float-slow 4s ease-in-out infinite; }
+/* ═══════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════ */
 
 @keyframes shimmer {
   0% { background-position: -200% center; }
@@ -110,365 +66,115 @@ h1, h2, h3, h4 {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.fade-up { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.fade-up-d1 { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; opacity: 0; }
-.fade-up-d2 { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards; opacity: 0; }
-.fade-up-d3 { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards; opacity: 0; }
-.fade-up-d4 { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards; opacity: 0; }
-.fade-up-d5 { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards; opacity: 0; }
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+.fade-up-d1 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s forwards; opacity: 0; }
+.fade-up-d2 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards; opacity: 0; }
+.fade-up-d3 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.35s forwards; opacity: 0; }
+.fade-up-d4 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s forwards; opacity: 0; }
+.fade-up-d5 { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.65s forwards; opacity: 0; }
 
-/* ═══════════════════════════════════════════════════════════
-   NEON TEXT UTILITIES
-   ═══════════════════════════════════════════════════════════ */
-
-.neon-text-pink {
-  text-shadow: 0 0 7px #FF2D7B, 0 0 21px #FF2D7B, 0 0 42px rgba(255,45,123,0.25);
-}
-.neon-text-cyan {
-  text-shadow: 0 0 7px #00F5FF, 0 0 21px #00F5FF, 0 0 42px rgba(0,245,255,0.25);
-}
-.neon-text-orange {
-  text-shadow: 0 0 7px #FF6B1A, 0 0 21px rgba(255,107,26,0.6);
-}
-.neon-text-purple {
-  text-shadow: 0 0 7px #9B2FFF, 0 0 21px #9B2FFF, 0 0 42px rgba(155,47,255,0.25);
-}
-.neon-text-gold {
-  text-shadow: 0 0 7px #FFD166, 0 0 21px rgba(255,209,102,0.4);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   VICE CARD — Rockstar dark glass panel
-   ═══════════════════════════════════════════════════════════ */
-
-.vice-card {
-  background: linear-gradient(135deg, var(--vc-dark-2) 0%, #0D0918 100%);
-  border: 1px solid var(--vc-dark-3);
-  border-radius: 2px;
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.vice-card:hover {
-  border-color: rgba(255, 45, 123, 0.35);
-  box-shadow: 0 8px 40px rgba(255, 45, 123, 0.1), 0 0 0 1px rgba(255,45,123,0.1);
-  transform: translateY(-3px);
-}
-
-/* ─── Category badge ────────────────────────── */
-.cat-badge {
-  font-family: var(--font-ui);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-size: 0.62rem;
-}
-
-/* ─── Accent line ───────────────────────────── */
-.accent-line {
-  width: 40px; height: 2px;
-  background: linear-gradient(90deg, var(--vc-sunset-1), var(--vc-sunset-2), var(--vc-sunset-3));
-  box-shadow: 0 0 8px rgba(255,45,123,0.4);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   HERO GRADIENT — Vice City golden hour
-   ═══════════════════════════════════════════════════════════ */
-
-.hero-gradient {
-  background:
-    radial-gradient(ellipse 140% 70% at 50% 100%, #3D0F2A 0%, rgba(61,15,42,0.4) 30%, transparent 65%),
-    radial-gradient(ellipse 80% 40% at 50% 85%, rgba(255,107,26,0.15) 0%, transparent 60%),
-    linear-gradient(180deg,
-      var(--vc-dark-1) 0%,
-      #0C0712 30%,
-      rgba(255,107,26,0.05) 60%,
-      rgba(255,45,123,0.06) 80%,
-      var(--vc-dark-1) 100%
-    );
-}
-
-/* ─── Scanlines overlay ─────────────────────── */
-.scanlines-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.scanlines-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.06) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
-  opacity: 0.04;
-  animation: scanlines 0.4s steps(1) infinite;
-}
-
-/* ─── Horizon glow ──────────────────────────── */
-.horizon-line {
-  position: absolute;
-  bottom: 12%;
-  left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent 2%,
-    rgba(255,180,80,0.3) 15%,
-    rgba(255,140,66,0.7) 35%,
-    rgba(255,209,102,0.9) 50%,
-    rgba(255,140,66,0.7) 65%,
-    rgba(255,180,80,0.3) 85%,
-    transparent 98%
-  );
-  animation: horizon-pulse 5s ease-in-out infinite;
-}
-
-/* ─── Header shimmer border ─────────────────── */
-.header-border {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent, #FF2D7B44 15%, #FF6B1A66 35%, #FFD16666 50%, #00F5FF44 70%, #9B2FFF44 85%, transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmer 6s linear infinite;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   PROSE — Article content (Vice City editorial)
-   ═══════════════════════════════════════════════════════════ */
-
-.prose-gta {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #C4B8D4;
-}
-
-.prose-gta h2 {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  margin: 3rem 0 1rem;
-  line-height: 1.05;
-  background: linear-gradient(135deg, #FF6B9D 0%, #FF8C42 50%, #FFD166 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(255,107,157,0.15));
-}
-
-.prose-gta h3 {
-  font-family: var(--font-ui);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #00F5FF;
-  margin: 2.25rem 0 0.7rem;
-  text-shadow: 0 0 10px rgba(0,245,255,0.15);
-}
-
-.prose-gta p {
-  margin-bottom: 1.4rem;
-  color: #C4B8D4;
-}
-
-.prose-gta strong {
-  color: #FFD166;
-  font-weight: 600;
-  text-shadow: 0 0 6px rgba(255,209,102,0.08);
-}
-
-.prose-gta ul, .prose-gta ol {
-  margin: 1rem 0 1.5rem 0;
-  padding-left: 1.5rem;
-  list-style: none;
-}
-.prose-gta li {
-  margin-bottom: 0.55rem;
-  position: relative;
-  padding-left: 0.25rem;
-  color: #C4B8D4;
-}
-.prose-gta li::before {
-  content: '\25B8';
-  position: absolute;
-  left: -1.3rem;
-  color: var(--vc-sunset-1);
-  font-size: 0.75rem;
-  top: 0.15rem;
-}
-
-.prose-gta a {
-  color: #00F5FF;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0,245,255,0.2);
-  transition: all 0.2s;
-}
-.prose-gta a:hover {
-  border-bottom-color: #00F5FF;
-  text-shadow: 0 0 8px rgba(0,245,255,0.4);
-}
-
-.prose-gta hr {
-  border: none;
-  height: 1px;
-  margin: 2.5rem 0;
-  background: linear-gradient(90deg, var(--vc-sunset-1), transparent 50%, var(--vc-sunset-1));
-  opacity: 0.2;
-}
-
-.prose-gta blockquote {
-  border-left: 3px solid var(--vc-sunset-1);
-  padding: 1rem 1.5rem;
-  margin: 2rem 0;
-  color: #9A8DA8;
-  font-style: italic;
-  background: rgba(255,45,123,0.04);
-  border-radius: 0 2px 2px 0;
-}
-
-.prose-gta table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.9rem;
-}
-.prose-gta th {
-  font-family: var(--font-ui);
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--vc-sunset-1);
-  text-align: left;
-  padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid rgba(255,45,123,0.12);
-}
-.prose-gta td {
-  color: #B0A4B8;
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   ARTICLE CARD — Magazine cover feel
-   ═══════════════════════════════════════════════════════════ */
-
-.article-card {
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.article-card:hover {
-  transform: translateY(-4px);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   CATEGORY HERO SECTION
-   ═══════════════════════════════════════════════════════════ */
-
-.category-hero {
-  padding: 4.5rem 1rem 3.5rem;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(180deg, var(--vc-dark-2) 0%, var(--vc-dark-1) 100%);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   VICE CITY IMMERSION — neon signs, wet asphalt, marquee
-   ═══════════════════════════════════════════════════════════ */
-
-/* Gradient title utility */
-.vc-title {
-  font-family: var(--font-display);
-  background: linear-gradient(135deg, #FF2D7B 0%, #FF6B1A 50%, #FFD166 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 30px rgba(255,45,123,0.5));
-}
-
-/* Neon sign classes — full tube glow */
-.neon-sign-pink {
-  color: #FF2D7B;
-  text-shadow: 0 0 5px #FF2D7B, 0 0 15px #FF2D7B, 0 0 30px #FF2D7B, 0 0 60px rgba(255,45,123,0.25);
-  animation: neon-flicker 4s infinite;
-}
-.neon-sign-cyan {
-  color: #00F5FF;
-  text-shadow: 0 0 5px #00F5FF, 0 0 15px #00F5FF, 0 0 30px #00F5FF, 0 0 60px rgba(0,245,255,0.25);
-}
-.neon-sign-orange {
-  color: #FF6B1A;
-  text-shadow: 0 0 5px #FF6B1A, 0 0 15px #FF6B1A, 0 0 30px #FF6B1A, 0 0 60px rgba(255,107,26,0.25);
-}
-
-/* Wet asphalt reflection */
-.wet-asphalt {
-  background: linear-gradient(180deg, transparent 0%, rgba(255,45,123,0.02) 40%, rgba(255,107,26,0.04) 100%);
-}
-
-/* Marquee / news ticker */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Glow pulse for hero "VICE CITY" text */
-@keyframes glow-pulse-text {
-  0%, 100% { filter: drop-shadow(0 0 20px rgba(255,45,123,0.5)) drop-shadow(0 0 60px rgba(255,45,123,0.2)); }
-  50% { filter: drop-shadow(0 0 35px rgba(255,107,26,0.6)) drop-shadow(0 0 80px rgba(255,45,123,0.3)); }
+/* ═══════════════════════════════════════
+   NEON TEXT — clean 2-layer glow
+   ═══════════════════════════════════════ */
+
+.neon-text-pink { text-shadow: 0 0 8px rgba(255,45,123,0.5), 0 0 24px rgba(255,45,123,0.2); }
+.neon-text-cyan { text-shadow: 0 0 8px rgba(0,245,255,0.5), 0 0 24px rgba(0,245,255,0.2); }
+.neon-text-orange { text-shadow: 0 0 8px rgba(255,107,26,0.5), 0 0 24px rgba(255,107,26,0.2); }
+.neon-text-purple { text-shadow: 0 0 8px rgba(155,47,255,0.5), 0 0 24px rgba(155,47,255,0.2); }
+.neon-text-gold { text-shadow: 0 0 8px rgba(255,209,102,0.4), 0 0 24px rgba(255,209,102,0.15); }
+
+/* ═══════════════════════════════════════
+   VICE CARD
+   ═══════════════════════════════════════ */
+
+.vice-card {
+  background: var(--vc-dark-2);
+  border: 1px solid var(--vc-dark-3);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+.vice-card:hover {
+  transform: translateY(-3px);
 }
 
-/* Vice City sky gradient for immersive hero */
-.vc-sky {
+/* ─── Utility ────────────────────────── */
+.cat-badge { font-family: var(--font-ui); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.62rem; }
+.accent-line { width: 40px; height: 2px; background: linear-gradient(90deg, var(--vc-sunset-1), var(--vc-sunset-2), var(--vc-sunset-3)); }
+
+/* ═══════════════════════════════════════
+   HERO GRADIENT — clean Vice City sunset
+   ═══════════════════════════════════════ */
+
+.hero-gradient {
   background: linear-gradient(180deg,
-    #0A0212 0%,
-    #1A0A2E 20%,
-    #2D0A1F 40%,
-    #4A1520 55%,
-    #6E200E 68%,
-    #8B2E0A 78%,
-    #CC5500 90%,
-    #FF8C00 100%
+    #07040A 0%,
+    #1A0A2E 40%,
+    #3D0F2A 65%,
+    #8B2E0A 85%,
+    #CC4400 95%,
+    #FF6600 100%
   );
 }
 
-/* Stars pseudo-element */
-.vc-stars::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 45%;
-  background: transparent;
-  box-shadow:
-    12vw 5vh 0 0.5px rgba(255,255,255,0.5),
-    25vw 8vh 0 0.5px rgba(255,255,255,0.3),
-    40vw 3vh 0 1px rgba(255,255,255,0.6),
-    55vw 12vh 0 0.5px rgba(255,255,255,0.4),
-    68vw 6vh 0 0.5px rgba(255,255,255,0.3),
-    82vw 9vh 0 1px rgba(255,255,255,0.5),
-    8vw 15vh 0 0.5px rgba(255,255,255,0.25),
-    33vw 18vh 0 0.5px rgba(255,255,255,0.4),
-    60vw 2vh 0 0.5px rgba(255,255,255,0.5),
-    75vw 16vh 0 0.5px rgba(255,255,255,0.3),
-    91vw 4vh 0 0.5px rgba(255,255,255,0.4),
-    15vw 22vh 0 0.5px rgba(255,255,255,0.2),
-    48vw 20vh 0 0.5px rgba(255,255,255,0.35),
-    5vw 10vh 0 0.5px rgba(255,255,255,0.3),
-    70vw 22vh 0 0.5px rgba(255,255,255,0.2),
-    88vw 14vh 0 0.5px rgba(255,255,255,0.4),
-    20vw 25vh 0 0.5px rgba(255,255,255,0.15),
-    52vw 7vh 0 1px rgba(255,255,255,0.5),
-    35vw 1vh 0 0.5px rgba(255,255,255,0.4),
-    95vw 18vh 0 0.5px rgba(255,255,255,0.25),
-    3vw 28vh 0 0.5px rgba(255,255,255,0.2),
-    42vw 26vh 0 0.5px rgba(255,255,255,0.15),
-    78vw 1vh 0 0.5px rgba(255,255,255,0.5),
-    62vw 28vh 0 0.5px rgba(255,255,255,0.1),
-    18vw 4vh 0 0.5px rgba(255,255,255,0.35);
-  pointer-events: none;
+/* Scanlines — very subtle */
+.scanlines-overlay {
+  position: absolute; inset: 0; pointer-events: none;
 }
+.scanlines-overlay::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+  opacity: 0.03;
+}
+
+/* Header shimmer border */
+.header-border {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #FF2D7B33 20%, #FF6B1A44 40%, #FFD16644 55%, #00F5FF33 75%, transparent);
+  background-size: 200% 100%;
+  animation: shimmer 8s linear infinite;
+}
+
+/* ═══════════════════════════════════════
+   PROSE — Article content
+   ═══════════════════════════════════════ */
+
+.prose-gta { font-size: 1rem; line-height: 1.8; color: #C4B8D4; }
+
+.prose-gta h2 {
+  font-family: var(--font-display); font-size: 2.2rem; margin: 3rem 0 1rem; line-height: 1.05;
+  background: linear-gradient(135deg, #FF6B9D, #FF8C42, #FFD166);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(255,107,157,0.12));
+}
+.prose-gta h3 { font-family: var(--font-ui); font-size: 1.4rem; font-weight: 700; color: #00F5FF; margin: 2.25rem 0 0.7rem; text-shadow: 0 0 8px rgba(0,245,255,0.12); }
+.prose-gta p { margin-bottom: 1.4rem; }
+.prose-gta strong { color: #FFD166; font-weight: 600; }
+.prose-gta ul, .prose-gta ol { margin: 1rem 0 1.5rem 0; padding-left: 1.5rem; list-style: none; }
+.prose-gta li { margin-bottom: 0.55rem; position: relative; padding-left: 0.25rem; }
+.prose-gta li::before { content: '\25B8'; position: absolute; left: -1.3rem; color: var(--vc-sunset-1); font-size: 0.75rem; top: 0.15rem; }
+.prose-gta a { color: #00F5FF; text-decoration: none; border-bottom: 1px solid rgba(0,245,255,0.2); transition: all 0.2s; }
+.prose-gta a:hover { border-bottom-color: #00F5FF; text-shadow: 0 0 6px rgba(0,245,255,0.3); }
+.prose-gta hr { border: none; height: 1px; margin: 2.5rem 0; background: linear-gradient(90deg, var(--vc-sunset-1), transparent 50%, var(--vc-sunset-1)); opacity: 0.15; }
+.prose-gta blockquote { border-left: 3px solid var(--vc-sunset-1); padding: 1rem 1.5rem; margin: 2rem 0; color: #9A8DA8; font-style: italic; background: rgba(255,45,123,0.03); border-radius: 0 2px 2px 0; }
+.prose-gta table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+.prose-gta th { font-family: var(--font-ui); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-sunset-1); text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,45,123,0.12); }
+.prose-gta td { color: #B0A4B8; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.03); }
+
+/* ═══════════════════════════════════════
+   ARTICLE CARD
+   ═══════════════════════════════════════ */
+
+.article-card { transition: all 0.25s ease; }
+.article-card:hover { transform: translateY(-3px); }
+
+/* Category hero */
+.category-hero { padding: 4.5rem 1rem 3.5rem; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--vc-dark-2) 0%, var(--vc-dark-1) 100%); }

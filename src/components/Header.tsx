@@ -15,32 +15,27 @@ export default function Header() {
 
   return (
     <header style={{
-      background: 'rgba(7, 4, 10, 0.92)',
-      backdropFilter: 'blur(16px) saturate(1.3)',
-      top: '32px', /* below news ticker */
+      background: 'rgba(7,4,10,0.92)',
+      backdropFilter: 'blur(16px)',
+      top: '32px',
     }} className="fixed left-0 right-0 z-50">
-      {/* Animated gradient border */}
       <div className="header-border" />
 
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between" style={{ height: '56px' }}>
-        {/* Logo — neon sign effect */}
-        <Link href="/" className="flex items-center gap-0.5 group" style={{ textDecoration: 'none', transition: 'transform 0.25s' }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.filter = 'drop-shadow(0 0 20px rgba(255,107,157,0.4))' }}
-          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'none' }}
-        >
-          <span className="neon-sign-pink" style={{
-            fontFamily: 'Bebas Neue, sans-serif',
-            fontSize: '2rem',
-            letterSpacing: '0.05em',
-            animationDelay: '0.5s',
+        {/* Logo — clean, no flicker */}
+        <Link href="/" className="flex items-center gap-0.5" style={{ textDecoration: 'none' }}>
+          <span style={{
+            fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.9rem', letterSpacing: '0.05em',
+            background: 'linear-gradient(135deg, #FF6B9D, #FF8C42, #FFD166)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            filter: 'drop-shadow(0 0 10px rgba(255,107,157,0.25))',
           }}>
             GTA6
           </span>
-          <span className="neon-flicker" style={{
-            fontFamily: 'Bebas Neue, sans-serif',
-            fontSize: '2rem',
+          <span style={{
+            fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.9rem', letterSpacing: '0.05em',
             color: '#00F5FF',
-            letterSpacing: '0.05em',
+            textShadow: '0 0 8px rgba(0,245,255,0.3)',
           }}>
             .SE
           </span>
@@ -54,11 +49,9 @@ export default function Header() {
                 fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
                 fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: hovered === link.href ? link.color : '#7A6880',
-                textShadow: hovered === link.href ? `0 0 12px ${link.color}60` : 'none',
-                textDecoration: 'none',
-                transition: 'color 0.25s, text-shadow 0.25s, border-color 0.25s',
-                padding: '0.25rem 0',
-                borderBottom: hovered === link.href ? `1px solid ${link.color}80` : '1px solid transparent',
+                textShadow: hovered === link.href ? `0 0 10px ${link.color}50` : 'none',
+                textDecoration: 'none', transition: 'all 0.25s', padding: '0.25rem 0',
+                borderBottom: hovered === link.href ? `1px solid ${link.color}60` : '1px solid transparent',
               }}
               onMouseEnter={() => setHovered(link.href)}
               onMouseLeave={() => setHovered(null)}
@@ -94,14 +87,12 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div style={{ borderTop: '1px solid #1A1325', background: 'rgba(7,4,10,0.98)', backdropFilter: 'blur(20px)' }} className="md:hidden px-5 py-5 flex flex-col gap-4">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} style={{
               fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1.1rem',
-              letterSpacing: '0.15em', textTransform: 'uppercase', color: link.color,
-              textShadow: `0 0 10px ${link.color}30`, textDecoration: 'none',
+              letterSpacing: '0.15em', textTransform: 'uppercase', color: link.color, textDecoration: 'none',
             }}>
               {link.label}
             </Link>
