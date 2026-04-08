@@ -70,6 +70,33 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://twitter.com/GTA6_SE"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 600,
+              fontSize: '0.75rem',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#FF2D7B',
+              textDecoration: 'none',
+              padding: '0.3rem 0.7rem',
+              border: '1px solid rgba(255, 45, 123, 0.2)',
+              borderRadius: '4px',
+              transition: 'all 0.2s',
+            }}
+            className="hover:shadow-[0_0_12px_rgba(255,45,123,0.2)]"
+          >
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            @GTA6_SE
+          </a>
         </nav>
 
         {/* Mobile hamburger */}
@@ -98,6 +125,33 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://twitter.com/GTA6_SE"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontFamily: 'Barlow Condensed, sans-serif',
+              fontWeight: 600,
+              fontSize: '0.9rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: '#FF2D7B',
+              textShadow: '0 0 10px rgba(255,45,123,0.3)',
+              textDecoration: 'none',
+              marginTop: '0.5rem',
+              paddingTop: '0.75rem',
+              borderTop: '1px solid rgba(255,45,123,0.1)',
+            }}
+          >
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            Följ @GTA6_SE
+          </a>
         </div>
       )}
     </header>

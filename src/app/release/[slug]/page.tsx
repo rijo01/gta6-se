@@ -1,6 +1,7 @@
 import { getArticleWithHtml, getArticlesByCategory } from '@/lib/content'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ShareButtons from '@/components/ShareButtons'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -49,6 +50,7 @@ export default async function ReleaseArticle({ params }: Props) {
         </section>
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '2.5rem 1rem 4rem' }}>
           <div className="prose-gta" dangerouslySetInnerHTML={{ __html: article.content }} />
+          <ShareButtons title={article.title} category="release" slug={article.slug} />
         </div>
       </main>
       <Footer />
