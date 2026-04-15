@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF2D7B"/>
+      <stop offset="55%" stop-color="#FF6B1A"/>
+      <stop offset="100%" stop-color="#FFD166"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="#07040A"/>
+  <text x="16" y="23" text-anchor="middle" font-family="'Bebas Neue', 'Impact', sans-serif" font-weight="900" font-size="22" fill="url(#g)" filter="url(#glow)" letter-spacing="-0.5">VI</text>
+</svg>
