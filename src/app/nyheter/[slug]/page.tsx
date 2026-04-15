@@ -3,7 +3,19 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ShareButtons from '@/components/ShareButtons'
 import ArticleCard from '@/components/ArticleCard'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 import Link from 'next/link'
+
+const TRAILER_EMBEDS: Record<string, { videoId: string; title: string }> = {
+  'gta-6-trailer-1-analys': {
+    videoId: 'QdBZY2fkU-0',
+    title: 'GTA 6 – Officiell Trailer 1 (December 2023)',
+  },
+  'gta-6-trailer-2-analys': {
+    videoId: 'VQRLujxTm3c',
+    title: 'GTA 6 – Officiell Trailer 2 (Maj 2025)',
+  },
+}
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -60,6 +72,14 @@ export default async function NyheterArticle({ params }: Props) {
           </div>
         </section>
         <div style={{ maxWidth: '740px', margin: '0 auto', padding: '2.5rem 1rem 3rem' }}>
+          {TRAILER_EMBEDS[slug] && (
+            <div style={{ marginBottom: '2.5rem' }}>
+              <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: CAT_COLOR, marginBottom: '0.9rem' }}>
+                Se trailern nedan
+              </p>
+              <YouTubeEmbed videoId={TRAILER_EMBEDS[slug].videoId} title={TRAILER_EMBEDS[slug].title} />
+            </div>
+          )}
           <div className="prose-gta" dangerouslySetInnerHTML={{ __html: article.content }} />
           <ShareButtons title={article.title} category={CAT} slug={article.slug} />
           {related.length > 0 && (

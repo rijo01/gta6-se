@@ -3,6 +3,7 @@ import ArticleCard from '@/components/ArticleCard'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CountdownHero from '@/components/CountdownHero'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 import Link from 'next/link'
 
 const cats = [
@@ -200,6 +201,96 @@ export default function HomePage() {
             </section>
           )}
         </div>
+
+        {/* ═══ OFFICIELLA TRAILERS ═══ */}
+        <section style={{
+          background: 'linear-gradient(180deg, #07040A 0%, #0D0812 50%, #07040A 100%)',
+          borderTop: '1px solid rgba(255,45,123,0.15)',
+          borderBottom: '1px solid rgba(255,45,123,0.15)',
+          padding: '4rem 1rem',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <div style={{
+            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
+            width: '900px', height: '400px',
+            background: 'radial-gradient(ellipse, rgba(255,45,123,0.08) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
+          <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <span style={{
+                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase',
+                color: '#FF2D7B', display: 'block', marginBottom: '0.75rem',
+              }}>
+                Från Rockstar Games
+              </span>
+              <h2 style={{
+                fontFamily: 'Bebas Neue, sans-serif',
+                fontSize: 'clamp(2.2rem, 5vw, 3.4rem)',
+                background: 'linear-gradient(135deg, #FF2D7B 0%, #FF6B1A 50%, #FFD166 100%)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                lineHeight: 1, letterSpacing: '0.03em',
+                filter: 'drop-shadow(0 0 25px rgba(255,45,123,0.25))',
+              }}>
+                Officiella Trailers
+              </h2>
+              <div style={{ width: '80px', height: '1px', background: 'linear-gradient(90deg, transparent, #FF6B1A, transparent)', margin: '1rem auto 0' }} />
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+              gap: '2rem',
+              marginBottom: '2rem',
+            }}>
+              {[
+                { videoId: 'QdBZY2fkU-0', title: 'GTA 6 – Trailer 1', badge: '90M+ visningar', color: '#FF2D7B' },
+                { videoId: 'VQRLujxTm3c', title: 'GTA 6 – Trailer 2', badge: '475M+ visningar', color: '#00F5FF' },
+              ].map(t => (
+                <div key={t.videoId}>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    marginBottom: '0.75rem',
+                  }}>
+                    <span style={{
+                      fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.3rem',
+                      color: '#F0E8F8', letterSpacing: '0.03em',
+                    }}>
+                      {t.title}
+                    </span>
+                    <span style={{
+                      fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                      fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                      color: t.color, padding: '0.25rem 0.6rem',
+                      border: `1px solid ${t.color}40`, borderRadius: '2px',
+                      background: `${t.color}0A`,
+                    }}>
+                      {t.badge}
+                    </span>
+                  </div>
+                  <YouTubeEmbed videoId={t.videoId} title={t.title} />
+                </div>
+              ))}
+            </div>
+
+            <div style={{ textAlign: 'center' }}>
+              <Link href="/trailers" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                padding: '0.7rem 1.6rem',
+                background: 'rgba(255,45,123,0.08)',
+                border: '1px solid rgba(255,45,123,0.35)',
+                borderRadius: '2px', color: '#FF2D7B',
+                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontSize: '0.78rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                textDecoration: 'none',
+              }}>
+                Alla trailers &rarr;
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

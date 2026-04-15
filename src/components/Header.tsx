@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 const navLinks = [
   { href: '/nyheter', label: 'Nyheter', color: '#FF2D7B' },
+  { href: '/trailers', label: 'Trailers', color: '#FFD166' },
   { href: '/guider', label: 'Guider', color: '#00F5FF' },
   { href: '/karaktarer', label: 'Karaktärer', color: '#9B2FFF' },
   { href: '/release', label: 'Release', color: '#FF6B1A' },
