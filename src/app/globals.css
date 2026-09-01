@@ -168,6 +168,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.04em; line-
 .prose-gta table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
 .prose-gta th { font-family: var(--font-ui); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-sunset-1); text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,45,123,0.12); }
 .prose-gta td { color: #B0A4B8; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.03); }
+/* Mobil 375 px: celler får aldrig tvinga fram horisontell scroll på sidan. */
+.prose-gta th, .prose-gta td { overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .prose-gta table { font-size: 0.82rem; }
+  .prose-gta th, .prose-gta td { padding: 0.45rem 0.4rem; }
+}
 
 /* ═══════════════════════════════════════
    ARTICLE CARD

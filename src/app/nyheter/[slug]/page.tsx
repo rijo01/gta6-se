@@ -1,4 +1,5 @@
 import { getArticleWithHtml, getArticlesByCategory, categoryColors } from '@/lib/content'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ShareButtons from '@/components/ShareButtons'
@@ -49,7 +50,7 @@ export default async function NyheterArticle({ params }: Props) {
   return (
     <>
       <Header />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.description, datePublished: article.date, inLanguage: 'sv-SE', publisher: { '@type': 'Organization', name: 'GTA6.se', url: 'https://gta6.se' } }) }} />
+      <ArticleJsonLd article={article} category={CAT} categoryLabel={CAT_LABEL} />
       <main style={{ paddingTop: '88px' }}>
         <section style={{ padding: '3.5rem 1rem 2.5rem', position: 'relative', overflow: 'hidden', background: `linear-gradient(180deg, #100C15 0%, #07040A 100%)`, borderBottom: `1px solid ${CAT_COLOR}15` }}>
           <div style={{ position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: `radial-gradient(ellipse, ${CAT_COLOR}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
@@ -65,6 +66,9 @@ export default async function NyheterArticle({ params }: Props) {
             <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
               <span style={{ width: 28, height: 2, background: CAT_COLOR, boxShadow: `0 0 8px ${CAT_COLOR}60` }} />
               <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.67rem', color: '#4A3E55', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{fmtDate(article.date)}</span>
+              {article.updated && article.updated !== article.date && (
+                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.67rem', color: '#4A3E55', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Uppdaterad {fmtDate(article.updated)}</span>
+              )}
               {article.readTime && (
                 <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.6rem', color: CAT_COLOR, fontWeight: 700, letterSpacing: '0.1em', padding: '0.12rem 0.5rem', border: `1px solid ${CAT_COLOR}25`, borderRadius: '2px', background: `${CAT_COLOR}08` }}>{article.readTime} MIN</span>
               )}
