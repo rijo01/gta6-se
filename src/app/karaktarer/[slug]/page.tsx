@@ -22,7 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const a = await getArticleWithHtml(CAT, slug)
   if (!a) return {}
-  return { title: a.title, description: a.description }
+  return {
+    title: a.title,
+    description: a.description,
+    alternates: { canonical: `/${CAT}/${slug}` },
+    ...(a.noindex ? { robots: { index: false, follow: true } } : {}),
+  }
 }
 
 function fmtDate(d: string) {

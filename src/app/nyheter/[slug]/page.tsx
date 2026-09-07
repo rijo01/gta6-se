@@ -34,7 +34,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const a = await getArticleWithHtml(CAT, slug)
   if (!a) return {}
-  return { title: a.title, description: a.description, openGraph: { title: a.title, description: a.description, type: 'article', publishedTime: a.date } }
+  return {
+    title: a.title,
+    description: a.description,
+    alternates: { canonical: `/${CAT}/${slug}` },
+    ...(a.noindex ? { robots: { index: false, follow: true } } : {}),
+    openGraph: { title: a.title, description: a.description, type: 'article', publishedTime: a.date },
+  }
 }
 
 function fmtDate(d: string) {

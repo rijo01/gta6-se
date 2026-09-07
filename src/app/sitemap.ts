@@ -1,10 +1,14 @@
 import { MetadataRoute } from 'next'
-import { getAllArticles, Category } from '@/lib/content'
+import { getIndexableArticles } from '@/lib/content'
 
 const BASE_URL = 'https://gta6.se'
 
+// Sitemapen far bara innehalla URL:er som svarar 200 och ar indexerbara:
+// - inga noindex-markta artiklar (getIndexableArticles filtrerar bort dem)
+// - inga sammanslagna slugs (de finns inte langre som filer, se next.config.mjs)
+// - inga slutande snedstreck (Next 308-omdirigerar /foo/ -> /foo)
 export default function sitemap(): MetadataRoute.Sitemap {
-  const articles = getAllArticles()
+  const articles = getIndexableArticles()
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: 'daily', priority: 1 },
@@ -17,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map(article => ({
     url: `${BASE_URL}/${article.category}/${article.slug}`,
-    lastModified: new Date(article.date),
+    lastModified: new Date(article.updated || article.date),
     changeFrequency: 'monthly',
     priority: 0.7,
   }))

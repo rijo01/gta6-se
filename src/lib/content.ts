@@ -20,6 +20,7 @@ export interface Article {
   description: string
   content: string
   readTime?: number
+  noindex?: boolean
   faq?: FaqItem[]
 }
 
@@ -112,6 +113,7 @@ export function getArticlesByCategory(category: Category): Article[] {
       description: data.description || '',
       content,
       readTime: Math.ceil(words / 200),
+      noindex: data.noindex === true,
     } as Article
   })
   return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -121,6 +123,11 @@ export function getAllArticles(): Article[] {
   const cats: Category[] = ['nyheter', 'guider', 'karaktarer', 'release']
   return cats.flatMap(getArticlesByCategory)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
+
+// Artiklar som far ligga i sitemap: allt utom noindex-markta.
+export function getIndexableArticles(): Article[] {
+  return getAllArticles().filter(a => !a.noindex)
 }
 
 export async function getArticleWithHtml(category: Category, slug: string): Promise<Article | null> {
@@ -141,6 +148,7 @@ export async function getArticleWithHtml(category: Category, slug: string): Prom
     description: data.description || '',
     content: html,
     readTime: Math.ceil(words / 200),
+    noindex: data.noindex === true,
     faq: extractFaq(content),
   }
 }
@@ -162,6 +170,7 @@ export function getArticle(category: Category, slug: string): Article | null {
     description: data.description || '',
     content,
     readTime: Math.ceil(words / 200),
+    noindex: data.noindex === true,
     faq: extractFaq(content),
   }
 }
