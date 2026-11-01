@@ -179,7 +179,7 @@ export function getArticle(category: Category, slug: string): Article | null {
 export const categoryLabels: Record<Category, string> = {
   nyheter: 'Nyheter',
   guider: 'Guider',
-  karaktarer: 'Karaktarer',
+  karaktarer: 'Karaktärer',
   release: 'Release',
 }
 

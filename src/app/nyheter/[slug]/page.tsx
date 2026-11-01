@@ -19,10 +19,14 @@ const TRAILER_EMBEDS: Record<string, { videoId: string; title: string }> = {
 }
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { articleMetadata } from '@/lib/meta'
 
 const CAT = 'nyheter' as const
 const CAT_LABEL = 'Nyheter'
 const CAT_COLOR = categoryColors[CAT]
+
+// Okända slugs ger 404 direkt i stället för att renderas på begäran.
+export const dynamicParams = false
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -34,13 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const a = await getArticleWithHtml(CAT, slug)
   if (!a) return {}
-  return {
-    title: a.title,
-    description: a.description,
-    alternates: { canonical: `/${CAT}/${slug}` },
-    ...(a.noindex ? { robots: { index: false, follow: true } } : {}),
-    openGraph: { title: a.title, description: a.description, type: 'article', publishedTime: a.date },
-  }
+  return articleMetadata(a, CAT, slug)
 }
 
 function fmtDate(d: string) {

@@ -7,10 +7,14 @@ import ArticleCard from '@/components/ArticleCard'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { articleMetadata } from '@/lib/meta'
 
 const CAT = 'guider' as const
 const CAT_LABEL = 'Guider'
 const CAT_COLOR = categoryColors[CAT]
+
+// Okända slugs ger 404 direkt i stället för att renderas på begäran.
+export const dynamicParams = false
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -22,12 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const a = await getArticleWithHtml(CAT, slug)
   if (!a) return {}
-  return {
-    title: a.title,
-    description: a.description,
-    alternates: { canonical: `/${CAT}/${slug}` },
-    ...(a.noindex ? { robots: { index: false, follow: true } } : {}),
-  }
+  return articleMetadata(a, CAT, slug)
 }
 
 function fmtDate(d: string) {

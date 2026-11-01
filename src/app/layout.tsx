@@ -13,10 +13,11 @@ export const metadata: Metadata = {
     google: 'REPLACE_WITH_GSC_CODE', // Replace with your Google Search Console verification code
   },
   metadataBase: new URL('https://gta6.se'),
+  // Ingen og:url här: den ärvs av alla sidor och pekade tidigare startsidan
+  // som URL för varje artikel. Artiklar sätter egen url i lib/meta.ts.
   openGraph: {
     type: 'website',
     locale: 'sv_SE',
-    url: 'https://gta6.se',
     siteName: 'GTA6.se',
   },
   twitter: { card: 'summary_large_image' },
@@ -37,6 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/icon.svg" />
+        {/* Fast i <head>: sidor med egen canonical ersätter hela alternates-objektet. */}
+        <link rel="alternate" type="application/rss+xml" title="GTA6.se" href="https://gta6.se/rss.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
