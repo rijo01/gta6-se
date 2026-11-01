@@ -15,7 +15,7 @@ const REDIRECTS = [
   ['/guider/gta-6-fordon-garage-guide-2026', '/guider/gta-6-fordon-och-bilar'],
   ['/guider/gta-6-foto-mode-guide-2026', '/guider/gta-6-foto-mode'],
   ['/guider/gta-6-grafik-instaellningar-ps5-2026', '/guider/gta-6-basta-instaallningar-ps5'],
-  ['/guider/gta-6-grafikkort-rekommendation-2026', '/guider/gta-6-grafikkort-pc'],
+  ['/guider/gta-6-grafikkort-rekommendation-2026', '/release/gta-6-systemkrav-pc'],
   ['/guider/gta-6-musik-radio-guide-2026', '/guider/gta-6-musik-och-radio'],
   ['/guider/gta-6-naturen-djurliv-2026', '/guider/gta-6-djurliv-och-natur'],
   ['/guider/gta-6-simning-dykning-guide-2026', '/guider/gta-6-simning-och-dykning'],
@@ -46,8 +46,6 @@ const REDIRECTS = [
   ['/nyheter/gta-6-marketing-sommar-2026', '/nyheter/gta-6-an-extended-look-allt-rockstar-visade'],
   ['/nyheter/gta-6-forsening-november-2026', '/nyheter/nar-kommer-gta-6-till-sverige'],
   ['/nyheter/gta-6-officiell-trailer-2-allt-vi-vet', '/nyheter/gta-6-trailer-2-analys'],
-  ['/nyheter/gta-6-take-two-investor-maj-2026', '/nyheter/gta-6-take-two-rapport-2026'],
-  ['/nyheter/gta-6-nyheter-maj-2026', '/nyheter/gta-6-nyheter-maj-22-2026'],
   ['/nyheter/gta-6-gameplay-features-maj-2026', '/nyheter/gta-6-an-extended-look-allt-rockstar-visade'],
   ['/nyheter/gta-6-trailer-3-rykte-analys-2026', '/nyheter/gta-6-rykte-trailer-3-gameplay'],
   ['/nyheter/gta-6-gaming-marknad-rekord-2026', '/nyheter/gta-6-forsaljning-rekord-prognos'],
@@ -71,6 +69,10 @@ const REDIRECTS = [
   ['/release/gta-6-forhandsbokning-25-juni-guide', '/release/gta-6-pris-sverige-kostnad'],
   ['/release/gta-6-forbestellning-var-kop', '/release/gta-6-pris-sverige-kostnad'],
   ['/release/gta-6-collector-edition-2026', '/release/gta-6-pris-sverige-kostnad'],
+
+  // Systemkravssidorna sammanslagna 1 november 2026
+  ['/guider/gta-6-systemkrav-pc-2026', '/release/gta-6-systemkrav-pc'],
+  ['/guider/gta-6-grafikkort-pc', '/release/gta-6-systemkrav-pc'],
 ]
 
 const nextConfig = {

@@ -64,7 +64,7 @@ export default function TrailersPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <main style={{ paddingTop: '88px' }}>
+      <main style={{ paddingTop: '56px' }}>
         <section
           style={{
             padding: '3.5rem 1rem 2.5rem',

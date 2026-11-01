@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
 import CookieConsent from '@/components/CookieConsent'
 import './globals.css'
-import NewsTicker from '@/components/NewsTicker'
 
 export const metadata: Metadata = {
   title: {
     default: 'GTA 6 – Nyheter, Guider & Release-info | GTA6.se',
     template: '%s | GTA6.se',
   },
-  description: 'Sveriges ledande källa för GTA 6. Senaste nytt, guider, karaktärer och all release-information om Grand Theft Auto 6.',
+  description: 'Nyheter, guider och release-information om Grand Theft Auto 6 på svenska.',
   keywords: ['GTA 6', 'Grand Theft Auto 6', 'GTA 6 Sverige', 'GTA 6 release', 'GTA 6 guide'],
   verification: {
     google: 'REPLACE_WITH_GSC_CODE', // Replace with your Google Search Console verification code
@@ -48,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'WebSite',
               name: 'GTA6.se',
               url: 'https://gta6.se',
-              description: 'Sveriges ledande källa för GTA 6-nyheter och guider',
+              description: 'Nyheter och guider om GTA 6 på svenska',
               inLanguage: 'sv-SE',
               potentialAction: {
                 '@type': 'SearchAction',
@@ -60,7 +59,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <NewsTicker />
         {children}
         <CookieConsent />
       </body>

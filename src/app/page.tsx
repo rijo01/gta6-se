@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '88px' }}>
+      <main style={{ paddingTop: '56px' }}>
 
         {/* ═══ HERO — Clean cinematic sunset ═══ */}
         <section className="hero-gradient" style={{
@@ -55,7 +55,7 @@ export default function HomePage() {
               fontSize: '0.7rem', letterSpacing: '0.4em', textTransform: 'uppercase',
               color: '#00F5FF', marginBottom: '1.25rem',
             }}>
-              Sveriges #1 sajt om
+              På svenska om
             </p>
 
             <h1 className="fade-up-d1" style={{

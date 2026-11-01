@@ -44,7 +44,7 @@ export default async function KaraktarerArticle({ params }: Props) {
     <>
       <Header />
       <ArticleJsonLd article={article} category={CAT} categoryLabel={CAT_LABEL} />
-      <main style={{ paddingTop: '88px' }}>
+      <main style={{ paddingTop: '56px' }}>
         <section style={{ padding: '3.5rem 1rem 2.5rem', position: 'relative', overflow: 'hidden', background: `linear-gradient(180deg, #100C15 0%, #07040A 100%)`, borderBottom: `1px solid ${CAT_COLOR}15` }}>
           <div style={{ position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '200px', background: `radial-gradient(ellipse, ${CAT_COLOR}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
           <div style={{ maxWidth: '740px', margin: '0 auto', position: 'relative', zIndex: 1 }}>

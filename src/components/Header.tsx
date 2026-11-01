@@ -18,7 +18,7 @@ export default function Header() {
     <header style={{
       background: 'rgba(7,4,10,0.92)',
       backdropFilter: 'blur(16px)',
-      top: '32px',
+      top: 0,
     }} className="fixed left-0 right-0 z-50">
       <div className="header-border" />
 

@@ -38,11 +38,6 @@ export default function Footer() {
           </span>
         </div>
 
-        {/* Tagline */}
-        <p style={{ textAlign: 'center', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#3A2E45', marginBottom: '2.5rem' }}>
-          Sveriges #1 källa för GTA 6 på svenska
-        </p>
-
         {/* Nav links — 2 rows centered */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           {links.map(l => (
