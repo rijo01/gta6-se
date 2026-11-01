@@ -117,3 +117,12 @@ research innan de rörs; ingen text har skrivits om utan källa.
 Kapa omdirigeringskedjan i Vercel: `http://www.gta6.se/x/` tar tre hopp
 (`http://www.` → `https://www.` → `https://` apex utan snedstreck). Peka `www` direkt
 mot apex över https så blir det ett hopp.
+
+**Läget 29 oktober 2026 (uppmätt med curl):** `www.gta6.se` är i Vercel satt som 308 direkt
+till `gta6.se`, så `https://www.gta6.se/x` → `https://gta6.se/x` är redan ett hopp. De extra
+hoppen kommer från två saker som inte är domäninställningar:
+- Vercel uppgraderar alltid `http://` → `https://` på samma värd *innan* domänomdirigeringen
+  körs. Det går inte att stänga av, så `http://www.gta6.se/x` blir två hopp. HSTS
+  (`max-age=63072000`) gör att återkommande webbläsare hoppar över http-steget.
+- Avslutande snedstreck normaliseras av Next efter domänomdirigeringen (+1 hopp).
+Ingen ändring gjord i Vercel — det finns ingen inställning som gör det till ett hopp.

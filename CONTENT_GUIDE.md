@@ -169,7 +169,9 @@ Status efter innehållspasset 1 september 2026.
    (`nyheter/gta-6-nyheter-maj-22-2026` är åtgärdad.)
 6. **Läckberoende innehåll** — se `SANERING.md` i repo-roten. Eget pass.
 7. **Topikala närdubbletter** i guider/release (simning ×3, foto mode ×2, systemkrav ×2,
-   förbeställning ×4, PS5 Pro ×2, multiplayer ×4, Lucia utseende ×2).
+   PS5 Pro ×2, multiplayer ×4, Lucia utseende ×2). Förbeställning/pris ×6 slogs ihop
+   29 oktober 2026 till `/release/gta-6-pris-sverige-kostnad` — det är köpsidan; skriv
+   inga nya pris-, förboknings- eller utgåvesidor, uppdatera den.
 
 ---
 
@@ -192,6 +194,8 @@ Verifierat 1 september 2026. Ingen fil i repot får motsäga det här.
 | PC | Inget datum, ingen butik, inga systemkrav | PC Gamer, SVG |
 | GTA Online | Inget nytt annonserat. "Single-player experience" är Take-Twos formulering — en **slutledning**, inte ett besked | GamesRadar |
 | Pris i Sverige | 899 kr standard, 1 149 kr Ultimate | SVT, Take-Two |
+| Ultimate Edition | **Endast digital.** Uppgradering från Standard finns; svenskt pris obekräftat per 29 okt | Rockstar Support, Xbox Store |
+| Samlarbox | *The Goodtime State – Vice City Collection*, 24 sep 2026. **Innehåller inte spelet.** Endast Rockstar Store, £349,99 / $399,99. Ingen samlarutgåva med spelet finns | Rockstar Newswire, NME, Vice |
 
 **Navartikel:** `/nyheter/gta-6-an-extended-look-allt-rockstar-visade`. Nya djupdykningar
 i ämnet ska länka dit, och navet ska uppdateras med länk tillbaka.

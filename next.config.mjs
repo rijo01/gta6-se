@@ -55,15 +55,22 @@ const REDIRECTS = [
   ['/nyheter/gta-6-konsol-exklusivitet-2026', '/guider/gta-6-pc-release-datum'],
   ['/nyheter/gta-6-release-pris-sverige-2026', '/release/gta-6-pris-sverige-kostnad'],
   ['/nyheter/gta-6-nedrakning-dagar-kvar', '/nyheter/nar-kommer-gta-6-till-sverige'],
-  ['/nyheter/gta-6-pre-order-oppnar-snart', '/release/gta-6-forbestalla-sverige-guide'],
+  ['/nyheter/gta-6-pre-order-oppnar-snart', '/release/gta-6-pris-sverige-kostnad'],
   ['/release/gta-6-plattformar-ps5-xbox-pc', '/nyheter/nar-kommer-gta-6-till-sverige'],
   ['/release/gta-6-release-datum-november-2026', '/nyheter/nar-kommer-gta-6-till-sverige'],
   ['/release/gta-6-trailer-3-nar-kommer', '/nyheter/gta-6-rykte-trailer-3-gameplay'],
   ['/release/gta-6-midnight-release-launch-2026', '/nyheter/gta-6-lansering-dag-ett'],
-  ['/release/gta-6-forbestallning-bonus-2026', '/release/gta-6-forbestalla-sverige-guide'],
+  ['/release/gta-6-forbestallning-bonus-2026', '/release/gta-6-pris-sverige-kostnad'],
   ['/release/gta-6-pc-release-datum-2027', '/guider/gta-6-pc-release-datum'],
   ['/release/gta-6-xbox-series-x-guide-2026', '/release/gta-6-xbox-series-x-guide'],
   ['/guider/gta-6-allt-vi-vet-2026', '/nyheter/gta-6-an-extended-look-allt-rockstar-visade'],
+
+  // Pris- och förbokningssidorna sammanslagna 29 oktober 2026
+  ['/release/gta-6-pris-sverige-uppskattning-25-juni', '/release/gta-6-pris-sverige-kostnad'],
+  ['/release/gta-6-forbestalla-sverige-guide', '/release/gta-6-pris-sverige-kostnad'],
+  ['/release/gta-6-forhandsbokning-25-juni-guide', '/release/gta-6-pris-sverige-kostnad'],
+  ['/release/gta-6-forbestellning-var-kop', '/release/gta-6-pris-sverige-kostnad'],
+  ['/release/gta-6-collector-edition-2026', '/release/gta-6-pris-sverige-kostnad'],
 ]
 
 const nextConfig = {
