@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import ConsentSettingsButton from '@/components/ConsentSettingsButton'
 
 const links = [
   { href: '/nyheter', label: 'Nyheter', color: '#FF2D7B' },
@@ -81,6 +82,14 @@ export default function Footer() {
             @GTA6_SE
           </a>
         </div>
+
+        {/* Om / kontakt / integritet */}
+        <nav aria-label="Om sajten" style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '1.5rem', fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.8rem', letterSpacing: '0.06em', color: '#8A7C94' }}>
+          <Link href="/om" style={{ color: '#8A7C94' }}>Om GTA6.se</Link>
+          <Link href="/kontakt" style={{ color: '#8A7C94' }}>Kontakt</Link>
+          <Link href="/integritetspolicy" style={{ color: '#8A7C94' }}>Integritetspolicy</Link>
+          <ConsentSettingsButton />
+        </nav>
 
         {/* Bottom line */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.025)', paddingTop: '1.5rem', textAlign: 'center' }}>

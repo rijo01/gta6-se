@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+import CookieConsent from '@/components/CookieConsent'
 import './globals.css'
 import NewsTicker from '@/components/NewsTicker'
 
@@ -60,9 +60,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <GoogleAnalytics />
         <NewsTicker />
         {children}
+        <CookieConsent />
       </body>
     </html>
   )
