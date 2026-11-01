@@ -179,6 +179,16 @@ Status efter innehållspasset 1 september 2026.
 
 Verifierat 1 september 2026. Ingen fil i repot får motsäga det här.
 
+> **Ändrat 1 november 2026 – källkrav skärpt.** Endast uppgifter som går att belägga med **text** på
+> rockstargames.com, i Take-Two IR-material eller på PlayStation/Xbox Store får publiceras.
+> Raderna nedan om efterlyst-systemet, Criminal Profile, bildfrekvens, kartan, kampanjlängd,
+> karaktärsbyte, mikrotransaktioner/AI och animationer kommer från presentationen An Extended Look
+> och pressens rapportering om den. De finns inte i text hos Rockstar och **får inte användas**
+> förrän de kan beläggas så. Belagt i text: release 19 nov 2026, PS5/Xbox Series X|S, förladdning
+> 12 nov, box med kod utan skiva, priser, PEGI 18 (droger, sex, våld – Xbox Store), "en
+> enspelarupplevelse" (Xbox Store), Jasons och Lucias karaktärstexter (rockstargames.com/VI/jason,
+> /lucia), An Extended Look publicerad 27 aug 2026 och inspelad på PS5.
+
 | Fakta | Läge | Källa |
 |---|---|---|
 | Efterlyst-systemet | **Sex stjärnor.** Brott måste bevittnas av vittne, larm eller kamera | Extended Look, Engadget |
@@ -197,8 +207,8 @@ Verifierat 1 september 2026. Ingen fil i repot får motsäga det här.
 | Ultimate Edition | **Endast digital.** Uppgradering från Standard finns; svenskt pris obekräftat per 29 okt | Rockstar Support, Xbox Store |
 | Samlarbox | *The Goodtime State – Vice City Collection*, 24 sep 2026. **Innehåller inte spelet.** Endast Rockstar Store, £349,99 / $399,99. Ingen samlarutgåva med spelet finns | Rockstar Newswire, NME, Vice |
 
-**Navartikel:** `/nyheter/gta-6-an-extended-look-allt-rockstar-visade`. Nya djupdykningar
-i ämnet ska länka dit, och navet ska uppdateras med länk tillbaka.
+**Navartikeln** `/nyheter/gta-6-an-extended-look-allt-rockstar-visade` är sedan 1 november 2026 en
+noindex-stubbe. Länka inte dit som "allt vi vet".
 
 ---
 

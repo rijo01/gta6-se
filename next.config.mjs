@@ -73,6 +73,9 @@ const REDIRECTS = [
   // Systemkravssidorna sammanslagna 1 november 2026
   ['/guider/gta-6-systemkrav-pc-2026', '/release/gta-6-systemkrav-pc'],
   ['/guider/gta-6-grafikkort-pc', '/release/gta-6-systemkrav-pc'],
+
+  // Borttagen 1 november 2026 (byggde på slutledning, inte besked)
+  ['/nyheter/gta-6-endast-singleplayer-release', '/nyheter/gta-6-vad-hander-med-gta-online'],
 ]
 
 const nextConfig = {
