@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
+import remarkGfm from 'remark-gfm'
 
 export type Category = 'nyheter' | 'guider' | 'karaktarer' | 'release'
 
@@ -27,7 +28,7 @@ export interface Article {
 const contentDir = path.join(process.cwd(), 'src/content')
 
 async function mdxToHtml(content: string): Promise<string> {
-  const result = await remark().use(remarkHtml, { sanitize: false }).process(content)
+  const result = await remark().use(remarkGfm, { singleTilde: false }).use(remarkHtml, { sanitize: false }).process(content)
   return result.toString()
 }
 
