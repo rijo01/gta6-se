@@ -1,6 +1,5 @@
 import type { Article, Category } from '@/lib/content'
-
-const BASE_URL = 'https://gta6.se'
+import { BASE_URL, ORG_ID, PERSON_ID, WEBSITE_ID, organizationNode, personNode, safeJson } from '@/lib/schema'
 
 // nyheter/release är tidsbunden rapportering; guider/karaktärer är evergreen.
 // Tidigare deklarerade guider HowTo utan step[] (ogiltigt) och karaktärer
@@ -10,11 +9,6 @@ const SCHEMA_TYPE: Record<Category, 'NewsArticle' | 'Article'> = {
   release: 'NewsArticle',
   guider: 'Article',
   karaktarer: 'Article',
-}
-
-// JSON.stringify escapar inte "<", vilket kan bryta ut ur <script>.
-function safeJson(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, '\\u003c')
 }
 
 interface Props {
@@ -35,7 +29,12 @@ export default function ArticleJsonLd({ article, category, categoryLabel }: Prop
     datePublished: article.date,
     inLanguage: 'sv-SE',
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    publisher: { '@type': 'Organization', name: 'GTA6.se', url: BASE_URL },
+    isPartOf: { '@id': WEBSITE_ID },
+    // Delningsbilden från opengraph-image.tsx (1200x630, bara text).
+    image: { '@type': 'ImageObject', url: `${url}/opengraph-image`, width: 1200, height: 630 },
+    // Fullständiga noder (inte bara @id) så att artikeln står på egna ben.
+    author: { ...personNode, '@id': PERSON_ID },
+    publisher: { ...organizationNode, '@id': ORG_ID },
   }
 
   // dateModified sätts bara när artikeln faktiskt reviderats efter publicering.

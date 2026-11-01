@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import CookieConsent from '@/components/CookieConsent'
 import { bebas, barlow, barlowCondensed } from './fonts'
+import { safeJson, websiteNode, organizationNode, personNode } from '@/lib/schema'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -41,22 +42,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/icon.svg" />
         {/* Fast i <head>: sidor med egen canonical ersätter hela alternates-objektet. */}
         <link rel="alternate" type="application/rss+xml" title="GTA6.se" href="https://gta6.se/rss.xml" />
+        {/* Webbplats, utgivare och ansvarig person. Inget sökformulär: sajten har ingen sökfunktion. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'GTA6.se',
-              url: 'https://gta6.se',
-              description: 'Nyheter och guider om GTA 6 på svenska',
-              inLanguage: 'sv-SE',
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: 'https://gta6.se/sok?q={search_term_string}',
-                'query-input': 'required name=search_term_string',
-              },
-            }),
+            __html: safeJson({ '@context': 'https://schema.org', '@graph': [websiteNode, organizationNode, personNode] }),
           }}
         />
       </head>
