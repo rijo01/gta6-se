@@ -83,6 +83,8 @@ export default function Footer() {
           <Link href="/om" style={{ color: '#8A7C94' }}>Om GTA6.se</Link>
           <Link href="/kontakt" style={{ color: '#8A7C94' }}>Kontakt</Link>
           <Link href="/integritetspolicy" style={{ color: '#8A7C94' }}>Integritetspolicy</Link>
+          <a href="https://www.rockstargames.com/newswire" rel="noopener" style={{ color: '#8A7C94' }}>Rockstar Newswire</a>
+          <a href="https://www.rockstargames.com/VI" rel="noopener" style={{ color: '#8A7C94' }}>Grand Theft Auto VI hos Rockstar</a>
           <ConsentSettingsButton />
         </nav>
 
