@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CookieConsent from '@/components/CookieConsent'
+import { bebas, barlow, barlowCondensed } from './fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -34,14 +35,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sv">
+    <html lang="sv" className={`${bebas.variable} ${barlow.variable} ${barlowCondensed.variable}`}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/icon.svg" />
         {/* Fast i <head>: sidor med egen canonical ersätter hela alternates-objektet. */}
         <link rel="alternate" type="application/rss+xml" title="GTA6.se" href="https://gta6.se/rss.xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -51,7 +51,7 @@ export default function HomePage() {
           <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', maxWidth: '800px' }}>
 
             <p className="fade-up neon-text-cyan" style={{
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontFamily: 'var(--font-ui)', fontWeight: 700,
               fontSize: '0.7rem', letterSpacing: '0.4em', textTransform: 'uppercase',
               color: '#00F5FF', marginBottom: '1.25rem',
             }}>
@@ -59,7 +59,7 @@ export default function HomePage() {
             </p>
 
             <h1 className="fade-up-d1" style={{
-              fontFamily: 'Bebas Neue, sans-serif',
+              fontFamily: 'var(--font-display)',
               fontSize: 'clamp(6rem, 18vw, 13rem)',
               letterSpacing: '0.06em',
               lineHeight: 0.85,
@@ -73,7 +73,7 @@ export default function HomePage() {
             </h1>
 
             <p className="fade-up-d1" style={{
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontFamily: 'var(--font-ui)', fontWeight: 700,
               fontSize: '1rem', letterSpacing: '0.5em', textTransform: 'uppercase',
               color: '#FFD166', opacity: 0.8, marginBottom: '2rem',
             }}>
@@ -93,7 +93,7 @@ export default function HomePage() {
               borderRadius: '2px',
             }}>
               <span style={{
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontFamily: 'var(--font-ui)', fontWeight: 700,
                 fontSize: '0.85rem', letterSpacing: '0.25em', textTransform: 'uppercase',
                 color: '#FFD166',
               }}>
@@ -115,7 +115,7 @@ export default function HomePage() {
                 padding: '0.6rem 1.5rem',
                 background: 'rgba(255,45,123,0.1)', border: '1px solid rgba(255,45,123,0.35)',
                 borderRadius: '2px', color: '#FF2D7B',
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontFamily: 'var(--font-ui)', fontWeight: 700,
                 fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                 textDecoration: 'none', transition: 'all 0.25s',
               }}>
@@ -126,7 +126,7 @@ export default function HomePage() {
                 padding: '0.6rem 1.5rem',
                 background: 'transparent', border: '1px solid rgba(0,245,255,0.25)',
                 borderRadius: '2px', color: '#00F5FF',
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontFamily: 'var(--font-ui)', fontWeight: 700,
                 fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                 textDecoration: 'none', transition: 'all 0.25s',
               }}>
@@ -153,14 +153,14 @@ export default function HomePage() {
                   {/* Faded number */}
                   <span style={{
                     position: 'absolute', left: '0.5rem', top: '50%', transform: 'translateY(-50%)',
-                    fontFamily: 'Bebas Neue, sans-serif', fontSize: '4rem', color: 'rgba(255,255,255,0.025)',
+                    fontFamily: 'var(--font-display)', fontSize: '4rem', color: 'rgba(255,255,255,0.025)',
                     lineHeight: 1, pointerEvents: 'none',
                   }}>
                     {cat.num}
                   </span>
 
                   <div style={{ paddingLeft: '3rem', position: 'relative', zIndex: 1 }}>
-                    <span style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.8rem', color: cat.color, display: 'block', lineHeight: 1, marginBottom: '0.25rem' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: cat.color, display: 'block', lineHeight: 1, marginBottom: '0.25rem' }}>
                       {cat.label}
                     </span>
                     <span style={{ fontSize: '0.75rem', color: '#5A4E60', display: 'block', lineHeight: 1.4 }}>
@@ -168,7 +168,7 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '1.2rem', color: cat.color, opacity: 0.5, transition: 'transform 0.25s, opacity 0.25s' }}>
+                  <span style={{ fontFamily: 'var(--font-ui)', fontSize: '1.2rem', color: cat.color, opacity: 0.5, transition: 'transform 0.25s, opacity 0.25s' }}>
                     &rarr;
                   </span>
                 </Link>
@@ -183,7 +183,7 @@ export default function HomePage() {
             <section style={{ marginBottom: '4rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>
                 <span className="accent-line" />
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55' }}>Senaste</span>
+                <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55' }}>Senaste</span>
               </div>
               <ArticleCard article={featured} featured />
             </section>
@@ -193,7 +193,7 @@ export default function HomePage() {
             <section>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.75rem' }}>
                 <span className="accent-line" />
-                <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55' }}>Fler artiklar</span>
+                <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55' }}>Fler artiklar</span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
                 {recent.map(a => <ArticleCard key={`${a.category}-${a.slug}`} article={a} />)}
@@ -220,14 +220,14 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
               <span style={{
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontFamily: 'var(--font-ui)', fontWeight: 700,
                 fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase',
                 color: '#FF2D7B', display: 'block', marginBottom: '0.75rem',
               }}>
                 Från Rockstar Games
               </span>
               <h2 style={{
-                fontFamily: 'Bebas Neue, sans-serif',
+                fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(2.2rem, 5vw, 3.4rem)',
                 background: 'linear-gradient(135deg, #FF2D7B 0%, #FF6B1A 50%, #FFD166 100%)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
@@ -255,13 +255,13 @@ export default function HomePage() {
                     marginBottom: '0.75rem',
                   }}>
                     <span style={{
-                      fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.3rem',
+                      fontFamily: 'var(--font-display)', fontSize: '1.3rem',
                       color: '#F0E8F8', letterSpacing: '0.03em',
                     }}>
                       {t.title}
                     </span>
                     <span style={{
-                      fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                      fontFamily: 'var(--font-ui)', fontWeight: 700,
                       fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                       color: t.color, padding: '0.25rem 0.6rem',
                       border: `1px solid ${t.color}40`, borderRadius: '2px',
@@ -282,7 +282,7 @@ export default function HomePage() {
                 background: 'rgba(255,45,123,0.08)',
                 border: '1px solid rgba(255,45,123,0.35)',
                 borderRadius: '2px', color: '#FF2D7B',
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontFamily: 'var(--font-ui)', fontWeight: 700,
                 fontSize: '0.78rem', letterSpacing: '0.14em', textTransform: 'uppercase',
                 textDecoration: 'none',
               }}>

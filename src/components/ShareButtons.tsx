@@ -24,14 +24,14 @@ export default function ShareButtons({ title, category, slug }: ShareButtonsProp
   const btn: React.CSSProperties = {
     display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
     padding: '0.55rem 1.1rem', borderRadius: '2px',
-    fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600,
+    fontFamily: 'var(--font-ui)', fontWeight: 600,
     fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase',
     textDecoration: 'none', cursor: 'pointer', transition: 'all 0.25s',
   }
 
   return (
     <div style={{ borderTop: '1px solid rgba(255,45,123,0.08)', marginTop: '3rem', paddingTop: '2rem' }}>
-      <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55', display: 'block', marginBottom: '1rem' }}>
+      <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#4A3E55', display: 'block', marginBottom: '1rem' }}>
         Dela artikeln
       </span>
       <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>

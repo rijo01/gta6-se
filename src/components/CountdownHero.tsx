@@ -17,7 +17,7 @@ const labels = ['DAGAR', 'TIMMAR', 'MIN', 'SEK'] as const
 
 function Sep() {
   return (
-    <span style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: '#FF6B1A', alignSelf: 'center', opacity: 0.6 }}>:</span>
+    <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: '#FF6B1A', alignSelf: 'center', opacity: 0.6 }}>:</span>
   )
 }
 
@@ -47,7 +47,7 @@ export default function CountdownHero() {
             minWidth: 'clamp(52px, 10vw, 76px)',
           }}>
             <span style={{
-              fontFamily: 'Bebas Neue, sans-serif',
+              fontFamily: 'var(--font-display)',
               fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
               lineHeight: 1, display: 'block',
               color: '#FFD166',
@@ -55,7 +55,7 @@ export default function CountdownHero() {
               {String(val).padStart(i === 0 ? 1 : 2, '0')}
             </span>
             <span style={{
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontFamily: 'var(--font-ui)', fontWeight: 700,
               fontSize: '0.5rem', letterSpacing: '0.2em',
               color: '#5A4E60', display: 'block', marginTop: '0.2rem',
             }}>

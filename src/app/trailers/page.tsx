@@ -98,7 +98,7 @@ export default function TrailersPage() {
           >
             <nav
               style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
+                fontFamily: 'var(--font-ui)',
                 fontSize: '0.65rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -121,7 +121,7 @@ export default function TrailersPage() {
                 background: 'rgba(255,45,123,0.06)',
                 padding: '0.2rem 0.6rem',
                 borderRadius: '2px',
-                fontFamily: 'Barlow Condensed, sans-serif',
+                fontFamily: 'var(--font-ui)',
                 fontWeight: 700,
                 fontSize: '0.7rem',
                 letterSpacing: '0.15em',
@@ -133,7 +133,7 @@ export default function TrailersPage() {
             </span>
             <h1
               style={{
-                fontFamily: 'Bebas Neue, sans-serif',
+                fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
                 lineHeight: 1,
                 background:
@@ -186,7 +186,7 @@ export default function TrailersPage() {
               >
                 <span
                   style={{
-                    fontFamily: 'Bebas Neue, sans-serif',
+                    fontFamily: 'var(--font-display)',
                     fontSize: '3rem',
                     color: t.color,
                     lineHeight: 1,
@@ -197,7 +197,7 @@ export default function TrailersPage() {
                 </span>
                 <span
                   style={{
-                    fontFamily: 'Barlow Condensed, sans-serif',
+                    fontFamily: 'var(--font-ui)',
                     fontWeight: 700,
                     fontSize: '0.7rem',
                     letterSpacing: '0.15em',
@@ -214,7 +214,7 @@ export default function TrailersPage() {
               </div>
               <h2
                 style={{
-                  fontFamily: 'Bebas Neue, sans-serif',
+                  fontFamily: 'var(--font-display)',
                   fontSize: 'clamp(1.6rem, 3.5vw, 2.3rem)',
                   color: '#F0E8F8',
                   marginBottom: '0.6rem',
@@ -248,7 +248,7 @@ export default function TrailersPage() {
           >
             <span
               style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
+                fontFamily: 'var(--font-ui)',
                 fontWeight: 700,
                 fontSize: '0.7rem',
                 letterSpacing: '0.18em',
@@ -274,7 +274,7 @@ export default function TrailersPage() {
                   padding: '0.6rem 1.4rem',
                   border: '1px solid rgba(255,45,123,0.35)',
                   color: '#FF2D7B',
-                  fontFamily: 'Barlow Condensed, sans-serif',
+                  fontFamily: 'var(--font-ui)',
                   fontWeight: 700,
                   fontSize: '0.78rem',
                   letterSpacing: '0.12em',
@@ -291,7 +291,7 @@ export default function TrailersPage() {
                   padding: '0.6rem 1.4rem',
                   border: '1px solid rgba(0,245,255,0.35)',
                   color: '#00F5FF',
-                  fontFamily: 'Barlow Condensed, sans-serif',
+                  fontFamily: 'var(--font-ui)',
                   fontWeight: 700,
                   fontSize: '0.78rem',
                   letterSpacing: '0.12em',

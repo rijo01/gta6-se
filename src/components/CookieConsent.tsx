@@ -60,7 +60,7 @@ export default function CookieConsent() {
 
   const btn: React.CSSProperties = {
     flex: '1 1 0', minWidth: 120, padding: '0.7rem 1rem', borderRadius: 2, cursor: 'pointer',
-    fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.9rem',
+    fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '0.9rem',
     letterSpacing: '0.08em', textTransform: 'uppercase',
     background: 'transparent', color: '#F0E8F8', border: '1px solid #F0E8F8',
   }

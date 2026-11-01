@@ -18,7 +18,7 @@ export default function Footer() {
       {/* Background watermark */}
       <div style={{
         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-        fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(5rem, 20vw, 14rem)',
+        fontFamily: 'var(--font-display)', fontSize: 'clamp(5rem, 20vw, 14rem)',
         letterSpacing: '0.08em', color: 'rgba(255,255,255,0.015)',
         whiteSpace: 'nowrap', pointerEvents: 'none', userSelect: 'none',
       }}>
@@ -29,7 +29,7 @@ export default function Footer() {
         {/* Logo centered */}
         <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <span style={{
-            fontFamily: 'Bebas Neue, sans-serif', fontSize: '2.5rem', letterSpacing: '0.06em',
+            fontFamily: 'var(--font-display)', fontSize: '2.5rem', letterSpacing: '0.06em',
             background: 'linear-gradient(135deg, #FF6B9D, #FF8C42, #FFD166)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             filter: 'drop-shadow(0 0 15px rgba(255,107,157,0.2))',
@@ -42,7 +42,7 @@ export default function Footer() {
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           {links.map(l => (
             <Link key={l.href} href={l.href} style={{
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.8rem',
+              fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '0.8rem',
               letterSpacing: '0.12em', textTransform: 'uppercase',
               color: l.color, opacity: 0.6, textDecoration: 'none', transition: 'opacity 0.25s',
             }}
@@ -60,7 +60,7 @@ export default function Footer() {
             display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
             padding: '0.45rem 0.9rem', border: '1px solid rgba(255,45,123,0.2)',
             borderRadius: '2px', color: '#FF2D7B',
-            fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+            fontFamily: 'var(--font-ui)', fontWeight: 700,
             fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase',
             textDecoration: 'none', transition: 'all 0.25s',
           }}
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Om / kontakt / integritet */}
-        <nav aria-label="Om sajten" style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '1.5rem', fontFamily: 'Barlow Condensed, sans-serif', fontSize: '0.8rem', letterSpacing: '0.06em', color: '#8A7C94' }}>
+        <nav aria-label="Om sajten" style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '1.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8rem', letterSpacing: '0.06em', color: '#8A7C94' }}>
           <Link href="/om" style={{ color: '#8A7C94' }}>Om GTA6.se</Link>
           <Link href="/kontakt" style={{ color: '#8A7C94' }}>Kontakt</Link>
           <Link href="/integritetspolicy" style={{ color: '#8A7C94' }}>Integritetspolicy</Link>
@@ -88,7 +88,7 @@ export default function Footer() {
 
         {/* Bottom line */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.025)', paddingTop: '1.5rem', textAlign: 'center' }}>
-          <p style={{ fontSize: '0.62rem', color: '#1E1628', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.08em', lineHeight: 1.8 }}>
+          <p style={{ fontSize: '0.62rem', color: '#1E1628', fontFamily: 'var(--font-ui)', letterSpacing: '0.08em', lineHeight: 1.8 }}>
             © {new Date().getFullYear()} GTA6.SE &middot; Ej affilierad med Rockstar Games eller Take-Two Interactive
             <br />Grand Theft Auto är ett varumärke tillhörande Take-Two Interactive Software, Inc.
           </p>

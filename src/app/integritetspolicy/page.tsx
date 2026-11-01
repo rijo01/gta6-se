@@ -58,8 +58,8 @@ export default function IntegritetspolicyPage() {
           då inga spårningscookies förrän du startar videon.
         </li>
         <li>
-          <strong>Typsnitt</strong> hämtas i dag från Google Fonts, vilket innebär att din IP-adress
-          skickas till Google när sidan laddas. Vi håller på att flytta typsnitten till vår egen server.
+          <strong>Typsnitt</strong> serveras från vår egen domän. Din webbläsare gör inga anrop till
+          Google Fonts.
         </li>
         <li>
           <strong>Drift:</strong> sajten körs hos Vercel Inc., som behandlar IP-adresser i serverloggar

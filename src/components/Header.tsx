@@ -26,7 +26,7 @@ export default function Header() {
         {/* Logo — clean, no flicker */}
         <Link href="/" className="flex items-center gap-0.5" style={{ textDecoration: 'none' }}>
           <span style={{
-            fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.9rem', letterSpacing: '0.05em',
+            fontFamily: 'var(--font-display)', fontSize: '1.9rem', letterSpacing: '0.05em',
             background: 'linear-gradient(135deg, #FF6B9D, #FF8C42, #FFD166)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             filter: 'drop-shadow(0 0 10px rgba(255,107,157,0.25))',
@@ -34,7 +34,7 @@ export default function Header() {
             GTA6
           </span>
           <span style={{
-            fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.9rem', letterSpacing: '0.05em',
+            fontFamily: 'var(--font-display)', fontSize: '1.9rem', letterSpacing: '0.05em',
             color: '#00F5FF',
             textShadow: '0 0 8px rgba(0,245,255,0.3)',
           }}>
@@ -47,7 +47,7 @@ export default function Header() {
           {navLinks.map(link => (
             <Link key={link.href} href={link.href}
               style={{
-                fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+                fontFamily: 'var(--font-ui)', fontWeight: 700,
                 fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: hovered === link.href ? link.color : '#7A6880',
                 textShadow: hovered === link.href ? `0 0 10px ${link.color}50` : 'none',
@@ -63,7 +63,7 @@ export default function Header() {
           <a href="https://twitter.com/GTA6_SE" target="_blank" rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700,
+              fontFamily: 'var(--font-ui)', fontWeight: 700,
               fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase',
               color: '#FF2D7B', textDecoration: 'none',
               padding: '0.25rem 0.65rem',
@@ -92,7 +92,7 @@ export default function Header() {
         <div style={{ borderTop: '1px solid #1A1325', background: 'rgba(7,4,10,0.98)', backdropFilter: 'blur(20px)' }} className="md:hidden px-5 py-5 flex flex-col gap-4">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} style={{
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1.1rem',
+              fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '1.1rem',
               letterSpacing: '0.15em', textTransform: 'uppercase', color: link.color, textDecoration: 'none',
             }}>
               {link.label}
@@ -101,7 +101,7 @@ export default function Header() {
           <div style={{ borderTop: '1px solid #1A1325', paddingTop: '0.75rem', marginTop: '0.25rem' }}>
             <a href="https://twitter.com/GTA6_SE" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.85rem',
+              fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: '0.85rem',
               letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FF2D7B', textDecoration: 'none',
             }}>
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
